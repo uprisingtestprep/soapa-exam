@@ -1,0 +1,3002 @@
+[
+  {
+    "id": 1,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Descriptive analytics",
+    "back": "Analysis that answers what happened, using summaries and aggregations of historical data without fitting a model or forecasting a future outcome."
+  },
+  {
+    "id": 2,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Predictive analytics",
+    "back": "Analysis that answers what is likely to happen, using patterns learned from historical data to forecast an outcome that is not yet known."
+  },
+  {
+    "id": 3,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Prescriptive analytics",
+    "back": "Analysis that answers what action should be taken, using a model's predictions as an input to a decision rule or optimization."
+  },
+  {
+    "id": 4,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why does prescriptive analytics depend on predictive analytics?",
+    "back": "A decision cannot be prescribed from a prediction that has not yet been produced, so prescription is always downstream of prediction."
+  },
+  {
+    "id": 5,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why review data descriptively before modeling it?",
+    "back": "A descriptive review can catch data errors, such as an inflated claim count from a data entry mistake, before those errors corrupt a fitted model."
+  },
+  {
+    "id": 6,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Target variable",
+    "back": "The outcome a predictive model is trying to estimate, such as claim severity, lapse status, or claim count."
+  },
+  {
+    "id": 7,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Continuous target variable",
+    "back": "A numeric outcome that can take any value in a range, such as the ultimate loss amount on a property claim."
+  },
+  {
+    "id": 8,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Binary target variable",
+    "back": "An outcome with exactly two possible categories, such as whether a policy lapses within twelve months."
+  },
+  {
+    "id": 9,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Count target variable",
+    "back": "An outcome measured as a nonnegative whole number, such as the number of claims a policyholder files in a year."
+  },
+  {
+    "id": 10,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why not fit ordinary linear regression to a binary target?",
+    "back": "Linear regression can produce fitted values outside zero and one, which violates the meaning of a probability, so logistic regression or a classification tree is used instead."
+  },
+  {
+    "id": 11,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Supervised learning",
+    "back": "A modeling problem where the training data includes the actual historical value of the target variable, allowing predictions to be compared against known outcomes."
+  },
+  {
+    "id": 12,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Unsupervised learning",
+    "back": "A modeling problem with no labeled target variable, where the goal is to find structure among the predictor variables themselves, such as clustering."
+  },
+  {
+    "id": 13,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Unit of observation",
+    "back": "What a single row of the data set represents, such as a policy-year, an individual vehicle, or a claimant, and choosing it wrong can silently bias a model."
+  },
+  {
+    "id": 14,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Risk of an incorrect unit of observation",
+    "back": "Treating correlated observations, such as three vehicles in one household, as independent can understate the true uncertainty in a model's estimates."
+  },
+  {
+    "id": 15,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Static snapshot problem",
+    "back": "A predictive problem, such as underwriting approval at application, that uses a single point-in-time view of the data rather than a time series."
+  },
+  {
+    "id": 16,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Longitudinal modeling problem",
+    "back": "A predictive problem involving a time dimension, such as estimating a workers compensation claim's ultimate cost at multiple development periods."
+  },
+  {
+    "id": 17,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why might missing data itself carry information?",
+    "back": "A missing response, such as an unanswered smoking status question, may be more common among applicants for whom the true answer is unfavorable, so the missingness pattern is informative."
+  },
+  {
+    "id": 18,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Bias in a predictive model",
+    "back": "Systematic error that arises when a model's functional form is too simple to represent the true relationship between predictors and target."
+  },
+  {
+    "id": 19,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Variance in a predictive model",
+    "back": "Error that arises when a model is so flexible that it fits the noise in one particular training sample, producing very different results across different samples."
+  },
+  {
+    "id": 20,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Bias-variance tradeoff",
+    "back": "As model complexity increases, bias tends to fall while variance tends to rise, so total error is minimized at an intermediate complexity level rather than at either extreme."
+  },
+  {
+    "id": 21,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Irreducible error",
+    "back": "The portion of prediction error caused by inherent randomness in the outcome itself, which no model, however sophisticated, can eliminate."
+  },
+  {
+    "id": 22,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Expected total prediction error decomposition",
+    "back": "Expected prediction error equals squared bias plus variance plus irreducible error."
+  },
+  {
+    "id": 23,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example of high bias in an actuarial model",
+    "back": "Fitting a straight line to model auto claim frequency against driver age when the true relationship is U-shaped, so the line cannot capture the pattern regardless of sample size."
+  },
+  {
+    "id": 24,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example of high variance in an actuarial model",
+    "back": "A decision tree grown to full depth with only two or three claims per leaf, which fits training noise and would look very different if retrained on a new random sample."
+  },
+  {
+    "id": 25,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Does adding more training data fix high bias?",
+    "back": "No, because high bias comes from the model's structure being too rigid, not from insufficient data."
+  },
+  {
+    "id": 26,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Overfitting",
+    "back": "A model has learned the noise specific to its training sample rather than the generalizable signal, shown by low training error but high validation error."
+  },
+  {
+    "id": 27,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Underfitting",
+    "back": "A model is too simple to capture the true pattern, shown by training error and validation error that are both high and similar to each other."
+  },
+  {
+    "id": 28,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Training error as complexity increases",
+    "back": "Training error decreases monotonically as model complexity increases, since a more flexible model can always fit the training data at least as well as a simpler one."
+  },
+  {
+    "id": 29,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Validation error as complexity increases",
+    "back": "Validation error typically falls, reaches a minimum, then rises again as complexity keeps increasing past the point where variance begins to dominate bias."
+  },
+  {
+    "id": 30,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Signature of overfitting on training versus validation error",
+    "back": "A large gap where training error is low but validation error is high indicates the model has overfit the training sample."
+  },
+  {
+    "id": 31,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Signature of underfitting on training versus validation error",
+    "back": "Training error and validation error that are both high and close to each other indicate the model is underfit."
+  },
+  {
+    "id": 32,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example of underfitting in mortality modeling",
+    "back": "Using only attained age as a predictor when smoking status and build also carry mortality signal produces systematically biased premium rates."
+  },
+  {
+    "id": 33,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example of overfitting in mortality modeling",
+    "back": "Including a three-way interaction of age, zip code, and month of issue that fits quirks in past data but has no genuine mortality basis and will not generalize."
+  },
+  {
+    "id": 34,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Model complexity",
+    "back": "The flexibility of a model, driven by its number of parameters or splits, that determines how closely it can bend its fit to the training data."
+  },
+  {
+    "id": 35,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why translate a vague business question into a statistical question?",
+    "back": "A vague request rarely specifies a target variable, population, time period, or measurable success criterion, none of which a model can answer without being made explicit."
+  },
+  {
+    "id": 36,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example vague business question",
+    "back": "\"Our homeowners book is losing money, figure out why\" does not specify a target variable, population, or definition of losing money."
+  },
+  {
+    "id": 37,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "What must a good statistical translation make explicit?",
+    "back": "The target variable, the population being studied, the time window, and how the model's output will actually be used."
+  },
+  {
+    "id": 38,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Data availability constraint on a model's information",
+    "back": "A model cannot use information that will not exist yet at the moment the prediction actually needs to be made."
+  },
+  {
+    "id": 39,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example of a leakage-style timing error",
+    "back": "Using next year's claim experience to predict this year's lapse would use information not available at prediction time and is invalid."
+  },
+  {
+    "id": 40,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why exclude policies still inside a surrender charge period from a lapse model?",
+    "back": "Lapse dynamics differ sharply for policies inside a surrender charge window, so mixing them with post-surrender policies would blur the population being modeled."
+  },
+  {
+    "id": 41,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Lead time in a lapse model deployment",
+    "back": "A lapse model should be scored far enough ahead of the likely lapse date, such as three to six months, to give a retention program time to act."
+  },
+  {
+    "id": 42,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Factor: available data and technology",
+    "back": "A statistical question is only pursuable if the data it needs actually exists, at an adequate grain and history, and the company's systems can process it."
+  },
+  {
+    "id": 43,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example of a data availability limitation",
+    "back": "A model that ideally uses telematics hard-braking data cannot be built if the insurer has not yet rolled out a telematics program."
+  },
+  {
+    "id": 44,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Factor: significance of business impact",
+    "back": "A modeling project's expected dollar impact should be weighed against its cost in time and disruption before it is prioritized over other candidate projects."
+  },
+  {
+    "id": 45,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why prioritize a large premium line with an adverse loss ratio over a small line?",
+    "back": "The potential improvement in decisions on a large, underperforming line typically produces far greater dollar impact than the same modeling effort on a minor line."
+  },
+  {
+    "id": 46,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Factor: implementation challenges",
+    "back": "A model that cannot actually be deployed into production systems, filed with regulators, or maintained over time provides little practical value regardless of its accuracy."
+  },
+  {
+    "id": 47,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why are GLM coefficients easier to implement than a random forest in a legacy rating engine?",
+    "back": "GLM coefficients translate naturally into rating factors a legacy system can apply, while a forest of thousands of trees is difficult or impossible to embed the same way."
+  },
+  {
+    "id": 48,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why does regulatory filing favor interpretable models?",
+    "back": "Many US insurance regulators require a rating algorithm to be explained and reviewed, which favors models whose logic can be stated in plain terms over opaque, highly complex models."
+  },
+  {
+    "id": 49,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Model maintenance as an implementation concern",
+    "back": "A model that must be refit regularly as new experience emerges needs a sustainable production pipeline, not just a single one-time analysis."
+  },
+  {
+    "id": 50,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Next step when additional predictor data is unavailable",
+    "back": "Identify what data, such as credit-based insurance scores or telematics mileage, would most improve the analysis and recommend the company pursue obtaining it."
+  },
+  {
+    "id": 51,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why disclose a model's limitations rather than presenting it as final?",
+    "back": "A model trained during one economic environment, such as low interest rates, may not generalize once conditions change, so its limits should be stated honestly."
+  },
+  {
+    "id": 52,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Appropriate response to systematic underprediction in one segment",
+    "back": "Investigate whether an important segment-specific predictor is missing, such as a more granular occupation code, rather than discarding the model outright."
+  },
+  {
+    "id": 53,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Recognizing a valuable follow-up business question",
+    "back": "An analysis can reveal a narrower, more actionable follow-up project, such as a roof-age-triggered inspection program discovered while modeling claim frequency."
+  },
+  {
+    "id": 54,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Role of problem definition in an analytics project",
+    "back": "Problem definition determines whether every later step is aimed at a question worth answering that can actually be answered with the data and technology on hand."
+  },
+  {
+    "id": 55,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why does the real Exam PA emphasize written judgment over calculation?",
+    "back": "The exam is graded on how well a candidate reasons through a business scenario and communicates a recommendation, not on producing a single numeric answer."
+  },
+  {
+    "id": 56,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Categorical target with more than two levels",
+    "back": "A target variable with more than two categories, such as which of five injury severity categories a workers compensation claim falls into; note such categories are often ordinal (naturally ordered by severity) rather than purely unordered, which can affect model choice."
+  },
+  {
+    "id": 57,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why can descriptive analytics prevent wasted modeling effort?",
+    "back": "If the underlying business request only needs an explanation of what already happened, building a complex predictive model is unnecessary over-engineering."
+  },
+  {
+    "id": 58,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Clustering",
+    "back": "An unsupervised technique that groups observations, such as policyholders, into segments based on similarity in their predictor variables, with no predefined correct label."
+  },
+  {
+    "id": 59,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why must the unit of observation match the true risk structure?",
+    "back": "If the unit of observation is finer than the true independent risk unit, such as vehicle-year instead of household, correlated observations can be mistaken for independent ones."
+  },
+  {
+    "id": 60,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why choose a modeling technique after identifying target variable type?",
+    "back": "The mathematical form of the target variable, continuous, binary, or count, constrains which techniques are valid, so identifying it comes before choosing a method."
+  },
+  {
+    "id": 61,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "One model per horizon versus a single model with time as a predictor",
+    "back": "A longitudinal claim development problem can be handled either by fitting a separate model at each development period or by including development time as a predictor in one model."
+  },
+  {
+    "id": 62,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Practical effect of high bias on rates",
+    "back": "A biased model produces systematically wrong estimates in a consistent direction across many possible training samples, such as consistently underpriced rates for a mispriced segment."
+  },
+  {
+    "id": 63,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Practical effect of high variance on model stability",
+    "back": "A high-variance model would produce meaningfully different predictions if it were refit on a different random sample of the same underlying population."
+  },
+  {
+    "id": 64,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Sweet spot of model complexity",
+    "back": "The intermediate complexity level at which the sum of squared bias and variance, and therefore total expected error, is minimized."
+  },
+  {
+    "id": 65,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "How does pruning a decision tree affect bias and variance?",
+    "back": "Pruning reduces model complexity, which tends to increase bias slightly but reduce variance, often lowering total validation error if the tree had been overfit."
+  },
+  {
+    "id": 66,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "How does adding a relevant predictor typically affect bias?",
+    "back": "Adding a genuinely relevant predictor that was previously omitted tends to reduce bias by letting the model represent the true relationship more accurately."
+  },
+  {
+    "id": 67,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Risk of adding an irrelevant predictor",
+    "back": "Adding a predictor with no true relationship to the target tends to increase variance without reducing bias, worsening the bias-variance tradeoff."
+  },
+  {
+    "id": 68,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why must an actuary state assumptions explicitly in a written recommendation?",
+    "back": "A business stakeholder reading the memo needs to see exactly what question was answered, which may be narrower than the question they originally asked."
+  },
+  {
+    "id": 69,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Interpretability as a business requirement, not just a preference",
+    "back": "Interpretability is often a hard implementation constraint, since regulators, business users, and legacy systems may require a model whose logic can be explained plainly."
+  },
+  {
+    "id": 70,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Example translation of a marketing request into a modeling question",
+    "back": "\"Reduce lapses\" can be translated into predicting a binary lapse indicator over the next policy year for in-force policies past the surrender charge period, scored months in advance."
+  },
+  {
+    "id": 71,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why weigh cost of staff time and disruption against expected impact?",
+    "back": "A technically feasible project is not automatically worth pursuing if its expected business benefit is small relative to the actuarial time and operational change it requires."
+  },
+  {
+    "id": 72,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "When is a model considered mature versus a permanent finished artifact?",
+    "back": "A model is mature when it is monitored and periodically refit as new experience emerges, rather than treated as a static, never-revisited output."
+  },
+  {
+    "id": 73,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Why does grain of historical data matter for feasibility?",
+    "back": "A claims system that only retains detailed data for a limited history restricts how far back a credible training data set can reach."
+  },
+  {
+    "id": 74,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "Relationship between problem definition and validation results",
+    "back": "Validation results, such as a segment with systematic underprediction, can reveal that the original problem definition omitted an important predictor and needs revisiting."
+  },
+  {
+    "id": 75,
+    "domain": "predictive_analytics_problem_definition",
+    "front": "What three questions distinguish descriptive, predictive, and prescriptive analytics?",
+    "back": "Descriptive asks what happened, predictive asks what is likely to happen, and prescriptive asks what action should be taken."
+  },
+  {
+    "id": 76,
+    "domain": "data_exploration_and_visualization",
+    "front": "Structured data",
+    "back": "Data organized into a fixed set of fields, usually rows and columns, where every record has the same layout, such as a personal auto policy file with columns for driver age, vehicle type, and territory."
+  },
+  {
+    "id": 77,
+    "domain": "data_exploration_and_visualization",
+    "front": "Unstructured data",
+    "back": "Data with no fixed schema, such as adjuster notes, call transcripts, inspection images, or free-text accident descriptions, which cannot be fed directly into a model until converted into structured features."
+  },
+  {
+    "id": 78,
+    "domain": "data_exploration_and_visualization",
+    "front": "Semi-structured data",
+    "back": "Data that has some organization but not the strict tabular shape of a spreadsheet, such as a JSON file with nested claim and coverage objects."
+  },
+  {
+    "id": 79,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why can't adjuster notes be used directly in a GLM?",
+    "back": "They are unstructured text with no fixed schema; they must first be converted into structured features, such as keyword counts, phrase flags, or a sentiment score."
+  },
+  {
+    "id": 80,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give an example of a mixed structured/unstructured Exam PA data set.",
+    "back": "A workers' compensation study might provide a clean claims table (structured) alongside a text field of injury descriptions (unstructured)."
+  },
+  {
+    "id": 81,
+    "domain": "data_exploration_and_visualization",
+    "front": "Nominal variable",
+    "back": "A categorical variable with no natural order, such as vehicle color, marital status, or state of residence."
+  },
+  {
+    "id": 82,
+    "domain": "data_exploration_and_visualization",
+    "front": "Ordinal variable",
+    "back": "A categorical variable with a natural order but no consistent numeric spacing between levels, such as a satisfaction rating of low, medium, or high."
+  },
+  {
+    "id": 83,
+    "domain": "data_exploration_and_visualization",
+    "front": "Interval variable",
+    "back": "A variable with consistent numeric spacing but no true zero point, so ratios are not meaningful, such as calendar year."
+  },
+  {
+    "id": 84,
+    "domain": "data_exploration_and_visualization",
+    "front": "Ratio variable",
+    "back": "A variable with a true zero point and meaningful ratios, such as claim amount, annual premium, or driver age."
+  },
+  {
+    "id": 85,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is calendar year an interval variable rather than a ratio variable?",
+    "back": "It has consistent spacing between years but no true zero, so year 2000 is not meaningfully twice year 1000."
+  },
+  {
+    "id": 86,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is claim amount a ratio variable?",
+    "back": "It has a true zero (no claim occurred) and ratios are meaningful, so a $2,000 claim really is twice as large as a $1,000 claim."
+  },
+  {
+    "id": 87,
+    "domain": "data_exploration_and_visualization",
+    "front": "Response variable",
+    "back": "The outcome being predicted in a modeling exercise, also called the target or dependent variable, such as whether a policy lapses or the size of a claim."
+  },
+  {
+    "id": 88,
+    "domain": "data_exploration_and_visualization",
+    "front": "Predictor variable",
+    "back": "An input used to predict the response, also called an explanatory variable, independent variable, or feature, such as policyholder age or territory."
+  },
+  {
+    "id": 89,
+    "domain": "data_exploration_and_visualization",
+    "front": "Continuous variable",
+    "back": "A variable that can take any value within a range, such as loss amount or driver age measured in exact years."
+  },
+  {
+    "id": 90,
+    "domain": "data_exploration_and_visualization",
+    "front": "Discrete variable",
+    "back": "A variable that only takes distinct, separate values, such as number of claims or number of dependents."
+  },
+  {
+    "id": 91,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the difference between continuous/discrete and nominal-through-ratio classifications?",
+    "back": "Continuous and discrete describe how a variable is measured, while nominal, ordinal, interval, and ratio describe what mathematical operations are meaningful on it."
+  },
+  {
+    "id": 92,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give a complete classification of claim count.",
+    "back": "Claim count is a discrete ratio variable: it takes distinct values and has a true zero with meaningful ratios."
+  },
+  {
+    "id": 93,
+    "domain": "data_exploration_and_visualization",
+    "front": "What three design questions should an analyst evaluate before exploring individual variables?",
+    "back": "Whether the data's time frame, sampling method, and granularity are appropriate for the modeling purpose."
+  },
+  {
+    "id": 94,
+    "domain": "data_exploration_and_visualization",
+    "front": "Time frame (data design)",
+    "back": "Whether the period the data covers is still representative of the risk being modeled today, since stale data can look statistically strong while reflecting outdated conditions."
+  },
+  {
+    "id": 95,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why might a homeowners data set from five to fifteen years ago be problematic?",
+    "back": "It may not reflect current construction costs, current weather patterns, or current underwriting rules, so a model built on it could be practically wrong even if statistically strong."
+  },
+  {
+    "id": 96,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why might a data time frame that is too short be a problem?",
+    "back": "It may fail to capture rare but important events, such as a hurricane season or a pandemic-driven change in claim frequency."
+  },
+  {
+    "id": 97,
+    "domain": "data_exploration_and_visualization",
+    "front": "Sampling (data design)",
+    "back": "Whether the data set includes every eligible record or only a subset, and if a subset, whether that subset is representative of the full population."
+  },
+  {
+    "id": 98,
+    "domain": "data_exploration_and_visualization",
+    "front": "Selection bias (in data sampling)",
+    "back": "Bias introduced when a data set only contains a non-representative slice of records, such as only disputed or litigated claims, skewing a severity model toward extreme claims."
+  },
+  {
+    "id": 99,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give an example of selection bias from a claims data set.",
+    "back": "If a company only retained disputed or litigated claims, a severity model built from that file would be badly biased toward extreme claims, since ordinary quickly settled claims never entered the sample."
+  },
+  {
+    "id": 100,
+    "domain": "data_exploration_and_visualization",
+    "front": "Granularity (data design)",
+    "back": "The level of detail of each row in a data set, such as whether a row represents a single transaction, a claim, a policy, or an aggregated month of experience."
+  },
+  {
+    "id": 101,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give an example of a granularity mismatch.",
+    "back": "A response variable defined at the policy level (did the policyholder lapse) but a predictor only available at a more aggregated territory level."
+  },
+  {
+    "id": 102,
+    "domain": "data_exploration_and_visualization",
+    "front": "How is a granularity mismatch commonly resolved?",
+    "back": "By aggregating the more detailed data, such as claim-level records, up to the coarser level, such as policy level, before merging it with other characteristics."
+  },
+  {
+    "id": 103,
+    "domain": "data_exploration_and_visualization",
+    "front": "Which textbook's ideas underlie Exam PA's grading rubrics for exploratory graphs?",
+    "back": "Kieran Healy's 'Data Visualization: A Practical Introduction.'"
+  },
+  {
+    "id": 104,
+    "domain": "data_exploration_and_visualization",
+    "front": "Proportional ink principle",
+    "back": "The idea, associated with Edward Tufte, that the amount of ink used to represent a data value should be proportional to the value itself."
+  },
+  {
+    "id": 105,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why does starting a bar chart's y-axis at a nonzero value violate the proportional ink principle?",
+    "back": "It stretches a small true difference between bars into what visually looks like a huge difference, misleading the reader."
+  },
+  {
+    "id": 106,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give the chapter's example of a proportional-ink violation.",
+    "back": "Comparing average claim severity of $4,200 versus $4,350 by starting the y-axis at $4,000 instead of $0 makes an actual 3.5% difference look enormous."
+  },
+  {
+    "id": 107,
+    "domain": "data_exploration_and_visualization",
+    "front": "Chartjunk",
+    "back": "Any visual element that adds decoration without adding information, such as unnecessary 3D effects, heavy gridlines, redundant legends, or ornamental images."
+  },
+  {
+    "id": 108,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is chartjunk harmful beyond wasting space?",
+    "back": "It actively competes with the reader's attention against the data itself, making the actual pattern harder to see."
+  },
+  {
+    "id": 109,
+    "domain": "data_exploration_and_visualization",
+    "front": "Which chart type suits a single continuous variable?",
+    "back": "A histogram or a boxplot, such as for exploring claim severity."
+  },
+  {
+    "id": 110,
+    "domain": "data_exploration_and_visualization",
+    "front": "Which chart type suits a single categorical variable?",
+    "back": "A bar chart, such as for the distribution of policies by vehicle class."
+  },
+  {
+    "id": 111,
+    "domain": "data_exploration_and_visualization",
+    "front": "Which chart type suits two continuous variables?",
+    "back": "A scatterplot, such as age plotted against annual premium."
+  },
+  {
+    "id": 112,
+    "domain": "data_exploration_and_visualization",
+    "front": "Which chart type suits two categorical variables?",
+    "back": "A grouped or faceted bar chart, or a mosaic plot, such as coverage type against claim outcome."
+  },
+  {
+    "id": 113,
+    "domain": "data_exploration_and_visualization",
+    "front": "Name two commonly exam-flagged chart-type errors.",
+    "back": "Using a pie chart to compare many categories, and using a line chart to connect points that have no real ordering."
+  },
+  {
+    "id": 114,
+    "domain": "data_exploration_and_visualization",
+    "front": "Name three ways a graph's axes can mislead beyond a truncated y-axis.",
+    "back": "Using inconsistent bin widths on a histogram, reversing an axis direction without labeling it, or using a log scale without telling the reader."
+  },
+  {
+    "id": 115,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is Healy's broader point about the purpose of a graph?",
+    "back": "A graph is a communication tool aimed at a specific audience, not a decoration, and its complexity should match that audience."
+  },
+  {
+    "id": 116,
+    "domain": "data_exploration_and_visualization",
+    "front": "How should chart complexity differ between an actuarial peer and a business stakeholder audience?",
+    "back": "A graph for an actuarial peer reviewing model diagnostics can carry more technical density than one built for a non-technical stakeholder deciding on a rating plan."
+  },
+  {
+    "id": 117,
+    "domain": "data_exploration_and_visualization",
+    "front": "Univariate exploration",
+    "back": "Examining one variable at a time, almost always the first concrete step in an Exam PA written response."
+  },
+  {
+    "id": 118,
+    "domain": "data_exploration_and_visualization",
+    "front": "Histogram",
+    "back": "A graph that groups a continuous variable into bins and shows the count or proportion of observations in each bin."
+  },
+  {
+    "id": 119,
+    "domain": "data_exploration_and_visualization",
+    "front": "What shape does a claim severity histogram typically show?",
+    "back": "A right-skewed shape, where most claims are modest in size but a long thin tail of very large claims stretches to the right."
+  },
+  {
+    "id": 120,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why does a right-skewed severity histogram matter for model choice?",
+    "back": "It signals that a normal distribution assumption would fit poorly, pointing instead toward a gamma or lognormal model."
+  },
+  {
+    "id": 121,
+    "domain": "data_exploration_and_visualization",
+    "front": "Boxplot",
+    "back": "A summary of a continuous variable using five numbers: minimum (excluding outliers), first quartile, median, third quartile, and maximum (excluding outliers), with outliers plotted as individual points."
+  },
+  {
+    "id": 122,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is a boxplot especially useful for?",
+    "back": "Comparing the same variable across several groups side by side, such as claim severity across five vehicle classes."
+  },
+  {
+    "id": 123,
+    "domain": "data_exploration_and_visualization",
+    "front": "What does a longer whisker and more outlier points for sports cars versus minivans suggest?",
+    "back": "A quick visual confirmation that sports cars have more variable and extreme claim severity, consistent with underwriting expectations."
+  },
+  {
+    "id": 124,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is the median often more representative than the mean for skewed severity data?",
+    "back": "The mean is pulled upward by a long right tail of large claims, while the median better reflects the typical claim."
+  },
+  {
+    "id": 125,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why can standard deviation be a misleading spread measure on heavily skewed data?",
+    "back": "It can be dominated by a handful of very large observations rather than reflecting typical variability."
+  },
+  {
+    "id": 126,
+    "domain": "data_exploration_and_visualization",
+    "front": "Skewness statistic",
+    "back": "A direct measure of asymmetry in a distribution; a positive value confirms a right tail suspected from a histogram."
+  },
+  {
+    "id": 127,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is reporting the mean alongside the median a rewarded step on Exam PA?",
+    "back": "Because a sharp divergence between them is itself evidence of skew in the underlying distribution."
+  },
+  {
+    "id": 128,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why do outliers require investigation before removal?",
+    "back": "They can represent genuine rare events, such as a catastrophic claim, or data errors, such as a mistyped premium, and treating them the same way risks losing real information or keeping bad data."
+  },
+  {
+    "id": 129,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give the chapter's example of a genuine outlier versus a data error.",
+    "back": "A $50,000 medical claim in auto bodily injury may be a real severe injury claim to keep as is, while a policyholder age of 214 is almost certainly a data entry error."
+  },
+  {
+    "id": 130,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is a commonly penalized shortcut regarding outliers on Exam PA?",
+    "back": "Simply deleting every extreme value without first investigating whether it is a genuine event or a data error."
+  },
+  {
+    "id": 131,
+    "domain": "data_exploration_and_visualization",
+    "front": "Bivariate exploration",
+    "back": "Looking at the relationship between two variables at once, the natural next step after understanding each variable individually."
+  },
+  {
+    "id": 132,
+    "domain": "data_exploration_and_visualization",
+    "front": "Scatterplot",
+    "back": "A plot of two continuous variables against each other, one on each axis, used to spot a linear or nonlinear relationship."
+  },
+  {
+    "id": 133,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give the chapter's example of a nonlinear bivariate relationship.",
+    "back": "Claim frequency rising with age up to a point and then falling again, which suggests using a binned or nonlinear age term rather than a straight line."
+  },
+  {
+    "id": 134,
+    "domain": "data_exploration_and_visualization",
+    "front": "Pearson correlation coefficient",
+    "back": "A measure of the strength and direction of a linear relationship between two continuous variables, ranging from negative one to positive one."
+  },
+  {
+    "id": 135,
+    "domain": "data_exploration_and_visualization",
+    "front": "Does a correlation near zero mean two variables have no relationship?",
+    "back": "No, it only means there is no strong linear relationship; a scatterplot might still reveal a clear curved pattern that correlation alone would miss."
+  },
+  {
+    "id": 136,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why should a scatterplot and a correlation value be examined together?",
+    "back": "Correlation alone can miss a nonlinear pattern that a scatterplot would reveal, so relying on either alone can give an incomplete picture."
+  },
+  {
+    "id": 137,
+    "domain": "data_exploration_and_visualization",
+    "front": "Multicollinearity (as introduced via correlation)",
+    "back": "A problem in a linear model when two highly correlated predictors, such as vehicle age and vehicle model year, carry largely redundant information."
+  },
+  {
+    "id": 138,
+    "domain": "data_exploration_and_visualization",
+    "front": "Faceted or grouped plot",
+    "back": "A chart broken into a grid of small multiples, one panel per level of a categorical variable, allowing comparison across groups at a glance."
+  },
+  {
+    "id": 139,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give the chapter's example of a faceted plot use case.",
+    "back": "A faceted set of histograms of claim severity, one panel per policy state, to see whether some states have a fatter right tail."
+  },
+  {
+    "id": 140,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is faceting often preferred over overlapping charts for many groups?",
+    "back": "Overlapping histograms or scatterplots for more than two or three groups usually become unreadable, an example of too much ink obscuring the pattern."
+  },
+  {
+    "id": 141,
+    "domain": "data_exploration_and_visualization",
+    "front": "Cross-tabulation",
+    "back": "Also called a contingency table, it summarizes the joint distribution of two categorical variables by counting observations in each combination of categories."
+  },
+  {
+    "id": 142,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give the chapter's example of a cross-tabulation.",
+    "back": "Coverage type (basic, standard, premium) against claim outcome (no claim, one claim, multiple claims), which can reveal self-selection into richer coverage."
+  },
+  {
+    "id": 143,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why present row or column percentages alongside raw counts in a cross-tabulation?",
+    "back": "Because raw counts can mislead when group sizes differ substantially, such as 40 claims out of 50 basic-coverage policies versus 40 claims out of 5,000 premium-coverage policies."
+  },
+  {
+    "id": 144,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the first step in a strong Exam PA written data exploration response?",
+    "back": "Stating what each variable's type and role are."
+  },
+  {
+    "id": 145,
+    "domain": "data_exploration_and_visualization",
+    "front": "What sequence of steps does a strong written Exam PA response typically follow?",
+    "back": "State variable types and roles, evaluate time frame/sampling/granularity, produce well-chosen graphs following good design principles, and describe what the graphs show and why it matters for modeling."
+  },
+  {
+    "id": 146,
+    "domain": "data_exploration_and_visualization",
+    "front": "What do graders consistently reward regarding exploratory findings?",
+    "back": "Connecting an exploratory finding back to a business consequence, rather than simply stating a statistical fact and moving on."
+  },
+  {
+    "id": 147,
+    "domain": "data_exploration_and_visualization",
+    "front": "Give the chapter's example of connecting an exploratory finding to a business consequence.",
+    "back": "Noting that a right-skewed severity distribution suggests capping extreme claims separately in a reinsurance layer."
+  },
+  {
+    "id": 148,
+    "domain": "data_exploration_and_visualization",
+    "front": "Is data exploration treated as a warm-up exercise on Exam PA?",
+    "back": "No, it is graded as real analytical work in its own right, and candidates who treat it that way score better."
+  },
+  {
+    "id": 149,
+    "domain": "data_exploration_and_visualization",
+    "front": "What does the first written task on almost every Exam PA case study involve?",
+    "back": "Some form of data exploration and summary of the given data set."
+  },
+  {
+    "id": 150,
+    "domain": "data_exploration_and_visualization",
+    "front": "What are graders told to reward in early exploration responses?",
+    "back": "Candidates who describe what the data actually shows, in plain language, before jumping to modeling."
+  },
+  {
+    "id": 151,
+    "domain": "data_exploration_and_visualization",
+    "front": "Categorize a claim severity tier of minor, moderate, severe.",
+    "back": "It is an ordinal variable: the categories have a natural order but no consistent numeric spacing."
+  },
+  {
+    "id": 152,
+    "domain": "data_exploration_and_visualization",
+    "front": "Categorize vehicle color.",
+    "back": "It is a nominal variable: a category with no natural order."
+  },
+  {
+    "id": 153,
+    "domain": "data_exploration_and_visualization",
+    "front": "Categorize annual premium.",
+    "back": "It is a ratio variable: it has a true zero point and meaningful ratios."
+  },
+  {
+    "id": 154,
+    "domain": "data_exploration_and_visualization",
+    "front": "Categorize driver age measured in exact years.",
+    "back": "It is a continuous ratio variable: it can take any value within a range and has a true zero with meaningful ratios."
+  },
+  {
+    "id": 155,
+    "domain": "data_exploration_and_visualization",
+    "front": "Categorize number of dependents.",
+    "back": "It is a discrete ratio variable: it only takes distinct separate values and has a true zero with meaningful ratios."
+  },
+  {
+    "id": 156,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why should an actuary ask how far back a data set's time frame goes?",
+    "back": "To check whether anything has changed in the underlying insurance product, regulation, or economic environment since then, which could make the data stale."
+  },
+  {
+    "id": 157,
+    "domain": "data_exploration_and_visualization",
+    "front": "What question should an analyst ask about any subset of data used for modeling?",
+    "back": "Is this the full population of relevant records, or only a slice, and if a slice, is that slice representative?"
+  },
+  {
+    "id": 158,
+    "domain": "data_exploration_and_visualization",
+    "front": "What might granularity be for a claims data set?",
+    "back": "An individual claim transaction, an entire claim, an entire policy, or an aggregated month of experience for a book of business."
+  },
+  {
+    "id": 159,
+    "domain": "data_exploration_and_visualization",
+    "front": "What do Exam PA graders often ask candidates to do about granularity issues?",
+    "back": "Identify the granularity issue and propose a fix, such as aggregating claim-level data up to the policy level."
+  },
+  {
+    "id": 160,
+    "domain": "data_exploration_and_visualization",
+    "front": "What does a clean scatterplot with a simple trend line and clear axis labels illustrate?",
+    "back": "It communicates more than a chartjunk-laden version, such as the same plot rendered with shadowed 3D bars."
+  },
+  {
+    "id": 161,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is a pie chart flagged as a poor choice for comparing many categories?",
+    "back": "It becomes hard to compare slice sizes accurately as the number of categories grows, unlike a bar chart."
+  },
+  {
+    "id": 162,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is a line chart flagged as a poor choice for unordered categories?",
+    "back": "Connecting points that have no real ordering implies a trend or sequence that does not actually exist in the data."
+  },
+  {
+    "id": 163,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is one task Exam PA candidates are given regarding a colleague's graph?",
+    "back": "Identifying a misleading distortion in the graph, such as a truncated axis or unlabeled log scale, and explaining why it misrepresents the data."
+  },
+  {
+    "id": 164,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the mean's weakness as a measure of central tendency for skewed data?",
+    "back": "It is pulled upward by a long tail of large values, so it can overstate the typical observation."
+  },
+  {
+    "id": 165,
+    "domain": "data_exploration_and_visualization",
+    "front": "What does the whisker length in a boxplot represent?",
+    "back": "The range of data excluding points flagged as outliers, extending from the quartiles out to the minimum and maximum non-outlier values."
+  },
+  {
+    "id": 166,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the first quartile in a boxplot?",
+    "back": "The value below which 25% of the observations fall."
+  },
+  {
+    "id": 167,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the third quartile in a boxplot?",
+    "back": "The value below which 75% of the observations fall."
+  },
+  {
+    "id": 168,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why might annual mileage and claim frequency show an upward trend in a scatterplot?",
+    "back": "More miles driven means more exposure to the possibility of a claim occurring."
+  },
+  {
+    "id": 169,
+    "domain": "data_exploration_and_visualization",
+    "front": "What could explain a cross-tabulation showing premium coverage associated with more claims?",
+    "back": "Policyholders who expect to file claims may self-select into richer coverage tiers."
+  },
+  {
+    "id": 170,
+    "domain": "data_exploration_and_visualization",
+    "front": "What insurance-relevant reason makes vehicle age and vehicle model year problematic together as predictors?",
+    "back": "They are highly correlated and carry largely redundant information, which can create multicollinearity in a linear model."
+  },
+  {
+    "id": 171,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is one benefit of using percentages in a cross-tabulation rather than only counts?",
+    "back": "It allows a fair comparison across groups of very different sizes."
+  },
+  {
+    "id": 172,
+    "domain": "data_exploration_and_visualization",
+    "front": "Name a modeling implication of recognizing a right-skewed severity distribution early.",
+    "back": "It signals a normal distribution assumption would fit poorly, pointing toward a gamma or lognormal model instead."
+  },
+  {
+    "id": 173,
+    "domain": "data_exploration_and_visualization",
+    "front": "Which axis-related distortion involves an unlabeled transformation of scale?",
+    "back": "Using a log scale on an axis without telling the reader, which can distort the visual impression of the underlying pattern."
+  },
+  {
+    "id": 174,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the effect of using inconsistent bin widths on a histogram?",
+    "back": "It can distort the visual impression of the distribution's shape, making some regions look artificially more or less dense."
+  },
+  {
+    "id": 175,
+    "domain": "data_exploration_and_visualization",
+    "front": "How does structured data typically fit into a modeling workflow?",
+    "back": "It fits directly into a spreadsheet or modeling data frame with no extra work, unlike unstructured data."
+  },
+  {
+    "id": 176,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is an example of a life insurance data set that is structured?",
+    "back": "An in-force file with one row per policy and columns for issue age, face amount, and policy duration."
+  },
+  {
+    "id": 177,
+    "domain": "data_exploration_and_visualization",
+    "front": "What kind of feature engineering step converts unstructured text into usable model inputs?",
+    "back": "Counting keyword occurrences, flagging certain phrases, or extracting a sentiment score."
+  },
+  {
+    "id": 178,
+    "domain": "data_exploration_and_visualization",
+    "front": "Is recognizing which data needs conversion before modeling a graded skill on Exam PA?",
+    "back": "Yes, it is treated as a skill separate from and prior to any statistical technique."
+  },
+  {
+    "id": 179,
+    "domain": "data_exploration_and_visualization",
+    "front": "What natural-order property distinguishes ordinal from nominal variables?",
+    "back": "Ordinal variables have a natural order among categories, while nominal variables do not."
+  },
+  {
+    "id": 180,
+    "domain": "data_exploration_and_visualization",
+    "front": "What true-zero property distinguishes ratio from interval variables?",
+    "back": "Ratio variables have a true zero point that makes ratios meaningful, while interval variables do not."
+  },
+  {
+    "id": 181,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why can't you say a satisfaction rating of 'high' is twice as good as 'low'?",
+    "back": "Because ordinal categories have no consistent numeric spacing, only a natural order."
+  },
+  {
+    "id": 182,
+    "domain": "data_exploration_and_visualization",
+    "front": "What phrase should an actuary use to fully classify a variable for Exam PA?",
+    "back": "State both its measurement type and its continuous or discrete nature, such as 'claim count is a discrete ratio variable.'"
+  },
+  {
+    "id": 183,
+    "domain": "data_exploration_and_visualization",
+    "front": "What role does policyholder age typically play in a lapse model?",
+    "back": "It is a predictor variable, one of the inputs used to predict whether a policy lapses."
+  },
+  {
+    "id": 184,
+    "domain": "data_exploration_and_visualization",
+    "front": "What role does policy lapse status play when it is the outcome being modeled?",
+    "back": "It is the response variable, the target being predicted."
+  },
+  {
+    "id": 185,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why might a data set that only includes litigated claims mislead an actuary building a general severity model?",
+    "back": "It excludes the ordinary, quickly settled claims, so the model overstates typical severity due to selection bias."
+  },
+  {
+    "id": 186,
+    "domain": "data_exploration_and_visualization",
+    "front": "How does the proportional ink principle apply beyond bar charts?",
+    "back": "Any visual encoding of a data value, such as bar height, area, or bubble size, should scale proportionally to the actual value it represents."
+  },
+  {
+    "id": 187,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the general risk of adding heavy background gridlines to a chart?",
+    "back": "They add visual clutter without adding information, competing with the data for the reader's attention as a form of chartjunk."
+  },
+  {
+    "id": 188,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why might redundant color legends be considered chartjunk?",
+    "back": "When direct labels on the data itself would communicate the same information more simply, an extra legend only adds unnecessary decoration."
+  },
+  {
+    "id": 189,
+    "domain": "data_exploration_and_visualization",
+    "front": "What does a mosaic plot help visualize?",
+    "back": "The relationship between two categorical variables, similar to a grouped bar chart but with box areas proportional to group sizes."
+  },
+  {
+    "id": 190,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is comparing five vehicle-class boxplots on one chart more efficient than five separate charts?",
+    "back": "It allows a direct, at-a-glance visual comparison of spread, median, and outliers across all groups at once."
+  },
+  {
+    "id": 191,
+    "domain": "data_exploration_and_visualization",
+    "front": "What statistical evidence would confirm a suspected right skew seen in a histogram?",
+    "back": "A positive skewness statistic."
+  },
+  {
+    "id": 192,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is a claim count of zero meaningful under the ratio scale?",
+    "back": "Because zero represents a true absence of claims, which is what makes claim count a ratio rather than an interval variable."
+  },
+  {
+    "id": 193,
+    "domain": "data_exploration_and_visualization",
+    "front": "What audience-related judgment does Exam PA reward when a case study specifies a stakeholder?",
+    "back": "Tailoring the chart's complexity and labeling to match the stated audience in the prompt."
+  },
+  {
+    "id": 194,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why might a pandemic be relevant to evaluating a data set's time frame?",
+    "back": "A pandemic can cause a real shift in claim frequency, so a time frame too short to capture it may miss an important pattern."
+  },
+  {
+    "id": 195,
+    "domain": "data_exploration_and_visualization",
+    "front": "What does a scatterplot of loss ratio against policy year primarily help identify?",
+    "back": "Whether there is a trend, linear or otherwise, in loss ratio over time."
+  },
+  {
+    "id": 196,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the practical difference between granularity at the claim level versus the policy level?",
+    "back": "Claim-level rows can capture multiple claims per policy, while policy-level rows aggregate all of a policyholder's claims into one summary record."
+  },
+  {
+    "id": 197,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why does an Exam PA response benefit from stating a variable's role, not just its type?",
+    "back": "Knowing whether a variable is a response or a predictor determines how it should be used in the modeling process ahead."
+  },
+  {
+    "id": 198,
+    "domain": "data_exploration_and_visualization",
+    "front": "What is the risk of relying only on a correlation coefficient to judge model-worthy predictors?",
+    "back": "It can miss meaningful nonlinear relationships that a scatterplot would reveal, leading to an incomplete assessment of a variable's usefulness."
+  },
+  {
+    "id": 199,
+    "domain": "data_exploration_and_visualization",
+    "front": "Why is a cross-tabulation especially useful before building a categorical predictor model?",
+    "back": "It reveals the joint distribution of two categorical variables directly, showing patterns like self-selection that inform which factors to include."
+  },
+  {
+    "id": 200,
+    "domain": "data_exploration_and_visualization",
+    "front": "What overall lesson does Section 7 give about connecting exploration to business consequences?",
+    "back": "An exploratory finding is most valuable when tied to a concrete business action, such as capping extreme claims in a reinsurance layer, not left as a standalone statistical observation."
+  },
+  {
+    "id": 201,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is feature engineering?",
+    "back": "The process of creating new variables from existing data so a model can find relationships more easily, such as ratios, interaction terms, or binned versions of continuous variables."
+  },
+  {
+    "id": 202,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why bin a continuous variable like driver age?",
+    "back": "Binning lets a linear model assign a separate coefficient to each age group, capturing a nonlinear, U-shaped relationship with claim frequency that a single numeric coefficient cannot capture."
+  },
+  {
+    "id": 203,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is an interaction term?",
+    "back": "A new feature, often formed by multiplying two variables together, that lets a model capture how the effect of one predictor changes depending on the level of another predictor."
+  },
+  {
+    "id": 204,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why should you have a story before adding an interaction term?",
+    "back": "Adding interactions with no underlying rationale increases overfitting risk and produces a model that is harder to explain to a non-technical audience."
+  },
+  {
+    "id": 205,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Give an actuarial example of a ratio feature and why it is useful.",
+    "back": "Loss ratio (losses divided by premium) standardizes profitability across books of business, since neither losses nor premium alone reveals whether a book is profitable."
+  },
+  {
+    "id": 206,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why apply a log transform to claim severity?",
+    "back": "Claim severity is typically right-skewed with a long tail of large claims; a log transform compresses that tail, making the distribution more symmetric and relationships with predictors more linear."
+  },
+  {
+    "id": 207,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What caution applies when log transforming a variable?",
+    "back": "The log of zero or a negative number is undefined, so a small constant is sometimes added before transforming, and that choice should be explained."
+  },
+  {
+    "id": 208,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is dummy encoding?",
+    "back": "A method of converting a categorical variable into binary indicator variables, one for each level except a reference level, so the variable can be used in linear models and GLMs without perfect collinearity with the intercept."
+  },
+  {
+    "id": 209,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What problem can high-cardinality categorical variables cause?",
+    "back": "A variable like ZIP code with hundreds of levels creates too many dummy variables and levels with very little data; combining rare levels or replacing the variable with a numeric summary can help."
+  },
+  {
+    "id": 210,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a numeric summary encoding for a high-cardinality categorical variable?",
+    "back": "Replacing each category level with a numeric value, such as the average historical loss ratio for that level, instead of using one-hot encoding."
+  },
+  {
+    "id": 211,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is principal components analysis (PCA)?",
+    "back": "A technique that reduces the number of numeric variables by constructing new variables, called principal components, that are linear combinations of the originals and capture as much variance as possible."
+  },
+  {
+    "id": 212,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What defines the first principal component?",
+    "back": "The direction in the data that captures the maximum possible variance among all possible linear combinations of the original variables."
+  },
+  {
+    "id": 213,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What constraint does the second principal component satisfy?",
+    "back": "It captures the next most variance possible, subject to being uncorrelated (orthogonal) with the first principal component."
+  },
+  {
+    "id": 214,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why must variables be standardized before running PCA?",
+    "back": "PCA finds directions of maximum variance, and variance depends on measurement scale; without standardization a variable measured on a larger scale, like premium in dollars, would dominate the analysis regardless of its actual informativeness."
+  },
+  {
+    "id": 215,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What matrix does standardized PCA effectively use?",
+    "back": "Running PCA on standardized variables is equivalent to running PCA on the correlation matrix rather than the covariance matrix."
+  },
+  {
+    "id": 216,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a loading in PCA?",
+    "back": "A coefficient describing how strongly, and in what direction, each original variable contributes to a given principal component."
+  },
+  {
+    "id": 217,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "How would you interpret a principal component with large positive loadings on building age and negative loadings on claims-free years?",
+    "back": "It can be interpreted as an overall property risk axis, where older buildings with less claims-free history score high on that component."
+  },
+  {
+    "id": 218,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a scree plot?",
+    "back": "A graph showing the variance explained (or cumulative variance explained) by each principal component, plotted against the component number."
+  },
+  {
+    "id": 219,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What does the elbow in a scree plot indicate?",
+    "back": "The point where the curve of variance explained bends from steep to flat, often used as a visual rule of thumb for choosing how many principal components to keep."
+  },
+  {
+    "id": 220,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Name two common ways to choose the number of principal components to retain.",
+    "back": "Keeping enough components to explain a target cumulative percentage of variance (such as 80 or 90 percent), or using the scree plot elbow; the Kaiser rule of keeping components with an eigenvalue above one is another option."
+  },
+  {
+    "id": 221,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Is PCA supervised or unsupervised?",
+    "back": "Unsupervised; PCA never looks at a target variable, so it is not guaranteed to produce components that are useful predictors of the outcome you ultimately care about."
+  },
+  {
+    "id": 222,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a downside of using principal components as model predictors?",
+    "back": "Components are combinations of all input variables, which can make the resulting model harder to explain to a business audience than a model built on the original, interpretable variables."
+  },
+  {
+    "id": 223,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a typical actuarial use case for PCA before modeling?",
+    "back": "Reducing a large block of correlated rating variables, such as building age, roof age, and years since renovation, into a handful of components before feeding them into a GLM."
+  },
+  {
+    "id": 224,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is clustering?",
+    "back": "The task of grouping observations so that observations within a group are similar to each other and different from observations in other groups, with no target variable guiding the process."
+  },
+  {
+    "id": 225,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a common actuarial application of clustering?",
+    "back": "Grouping policyholders into risk segments based on rating variables, without pre-specifying what the segments should look like, to support targeted underwriting or marketing."
+  },
+  {
+    "id": 226,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Describe the two repeating steps of the K-means algorithm.",
+    "back": "Assign every observation to its nearest centroid, then recompute each centroid as the mean of all observations currently assigned to it, repeating until assignments stop changing."
+  },
+  {
+    "id": 227,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why is K-means run multiple times from different starting centroids?",
+    "back": "The algorithm converges to a final answer that depends on the random initial centroid placement, so multiple runs help find the result with the lowest total within-cluster variation."
+  },
+  {
+    "id": 228,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What distance metric does K-means typically use?",
+    "back": "Euclidean distance, the straight-line distance between two points, calculated after all variables have been standardized."
+  },
+  {
+    "id": 229,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why must variables be standardized before K-means clustering?",
+    "back": "Because Euclidean distance is affected by scale; a variable measured on a much larger numeric scale, such as premium in dollars, would dominate the distance calculation and effectively decide the clustering alone."
+  },
+  {
+    "id": 230,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is the elbow method used for in K-means?",
+    "back": "Choosing the number of clusters k by plotting within-cluster sum of squares against k and looking for the point where the rate of improvement slows sharply."
+  },
+  {
+    "id": 231,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Does within-cluster sum of squares always decrease as k increases?",
+    "back": "Yes; more clusters can always fit the data at least as well, so within-cluster sum of squares never increases as k grows, which is why the elbow shape rather than a minimum is used to choose k."
+  },
+  {
+    "id": 232,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Name two limitations of K-means clustering.",
+    "back": "It assumes clusters are roughly spherical and similar in size, and it requires the number of clusters k to be chosen in advance rather than discovered by the algorithm."
+  },
+  {
+    "id": 233,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why is K-means sensitive to outliers?",
+    "back": "Because centroids are computed as means of assigned points, a single extreme outlier can pull a centroid noticeably away from the bulk of the cluster's other points."
+  },
+  {
+    "id": 234,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "How should you validate K-means clusters in an actuarial context?",
+    "back": "Check whether the resulting groups actually differ in a business-relevant way, for example by comparing average claim frequency or severity across the segments."
+  },
+  {
+    "id": 235,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is agglomerative hierarchical clustering?",
+    "back": "A clustering method that starts with every observation as its own cluster and repeatedly merges the two closest clusters, one merge at a time, until all observations form a single cluster."
+  },
+  {
+    "id": 236,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a dendrogram?",
+    "back": "A tree diagram showing individual observations as leaves at the bottom and successive cluster merges as branches joining upward, ending in a single root."
+  },
+  {
+    "id": 237,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What does the height at which two branches join in a dendrogram represent?",
+    "back": "How dissimilar the two merging clusters were at the point they were combined."
+  },
+  {
+    "id": 238,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is single linkage?",
+    "back": "A linkage method that defines the distance between two clusters as the distance between the single closest pair of points, one from each cluster; it tends to produce long, thin, chained clusters."
+  },
+  {
+    "id": 239,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is complete linkage?",
+    "back": "A linkage method that defines the distance between two clusters as the distance between the single farthest pair of points, one from each cluster; it tends to produce more compact, evenly sized clusters."
+  },
+  {
+    "id": 240,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is average linkage?",
+    "back": "A linkage method that uses the average distance across all pairs of points between two clusters, striking a middle ground between single and complete linkage."
+  },
+  {
+    "id": 241,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is Ward's method?",
+    "back": "A linkage method that merges the pair of clusters at each step that produces the smallest possible increase in total within-cluster variance; it tends to produce similarly sized clusters and is a common default."
+  },
+  {
+    "id": 242,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "How do you obtain a specific set of clusters from a dendrogram?",
+    "back": "By cutting the tree: drawing a horizontal line at a chosen height and treating every branch the line crosses as a separate cluster."
+  },
+  {
+    "id": 243,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "How does the cut height affect the resulting clusters?",
+    "back": "Cutting higher on the dendrogram produces fewer, larger clusters, while cutting lower produces more, smaller clusters."
+  },
+  {
+    "id": 244,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What visual cue can justify a particular dendrogram cut height?",
+    "back": "A large vertical gap between successive merges, implying the next merge would combine clusters that are genuinely quite different."
+  },
+  {
+    "id": 245,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a key advantage of hierarchical clustering over K-means?",
+    "back": "Hierarchical clustering does not require specifying the number of clusters in advance and produces a dendrogram showing the full nested merge structure at every level of granularity."
+  },
+  {
+    "id": 246,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a key advantage of K-means over hierarchical clustering?",
+    "back": "K-means is generally faster and more scalable on large datasets, since it does not need to compute and store distances between every pair of observations."
+  },
+  {
+    "id": 247,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Which linkage methods are more robust to a single extreme outlier?",
+    "back": "Complete linkage and Ward's method tend to be more robust to a single extreme point than single linkage."
+  },
+  {
+    "id": 248,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why is it essential to interpret clusters after either K-means or hierarchical clustering?",
+    "back": "Neither method uses a target variable, so clusters must be checked against business measures like claim frequency, severity, or retention rate to confirm they carry real business meaning."
+  },
+  {
+    "id": 249,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why might binning also help with a high-cardinality variable like vehicle make?",
+    "back": "Grouping the rarest makes into an 'other' category prevents a model from trying to estimate a coefficient from only a handful of observations."
+  },
+  {
+    "id": 250,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is one reason a log-transformed response might fit insurance severity data better than the raw dollar amount?",
+    "back": "Many models assume roughly symmetric, homoscedastic errors, and log transforming a right-skewed severity variable brings its distribution closer to that assumption."
+  },
+  {
+    "id": 251,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What kind of variable is loss ratio, and why is it useful as a feature?",
+    "back": "It is a ratio feature (losses divided by premium) that captures relative profitability, which neither raw losses nor raw premium can show on its own."
+  },
+  {
+    "id": 252,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "How can a ratio feature reduce collinearity?",
+    "back": "Replacing two correlated raw variables with a single ratio, such as claims per year of exposure, can produce a more interpretable measure with less redundancy than keeping both raw variables."
+  },
+  {
+    "id": 253,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What general reasoning structure does Exam PA reward for feature engineering proposals?",
+    "back": "State the problem observed in the raw data, propose a specific transformation, and explain why that transformation addresses the problem for the business question at hand."
+  },
+  {
+    "id": 254,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What happens to the number of principal components as you keep computing them?",
+    "back": "You can compute as many principal components as there are original variables, though in practice only the first few, which capture most of the variance, are retained."
+  },
+  {
+    "id": 255,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is the Kaiser rule for choosing principal components?",
+    "back": "A rule of thumb that keeps only components with an eigenvalue greater than one when PCA is run on a standardized correlation matrix."
+  },
+  {
+    "id": 256,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why is PCA often described as exploratory rather than a final modeling answer?",
+    "back": "Because it does not use the target variable and produces components that can be hard to interpret directly, it is often used as a preprocessing step before a supervised model rather than the final analysis."
+  },
+  {
+    "id": 257,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is the effect of choosing k too small in K-means?",
+    "back": "Distinct groups in the data may be merged together, hiding meaningful business differences between segments that a larger k would have separated."
+  },
+  {
+    "id": 258,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is the effect of choosing k too large in K-means?",
+    "back": "The clusters may become overly fine and harder to interpret or act on operationally, even though within-cluster sum of squares keeps decreasing."
+  },
+  {
+    "id": 259,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why might a business context override a purely statistical choice of k?",
+    "back": "A company may only be able to operationally support a fixed number of rating tiers, making a smaller or specific k more practical even if the elbow method suggests otherwise."
+  },
+  {
+    "id": 260,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What shape assumption does K-means make about clusters?",
+    "back": "It assumes clusters are roughly spherical and similar in size, so it performs poorly on elongated, irregularly shaped, or very differently sized true groupings."
+  },
+  {
+    "id": 261,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What computational drawback does hierarchical clustering have compared to K-means as data grows?",
+    "back": "It is generally more computationally expensive, since a full hierarchical merge requires repeated distance calculations across all pairs of clusters."
+  },
+  {
+    "id": 262,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "When might hierarchical clustering be preferred over K-means?",
+    "back": "For smaller datasets or exploratory work where you want to see multiple candidate groupings from one dendrogram before committing to a final number of clusters."
+  },
+  {
+    "id": 263,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What does it mean that the first and second principal components are orthogonal?",
+    "back": "They are uncorrelated with each other, meaning each successive component captures variance not already explained by the earlier components."
+  },
+  {
+    "id": 264,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Give an example of an interaction term in a homeowners insurance model.",
+    "back": "Building age multiplied by an indicator for outdated wiring, capturing that the effect of building age on claim severity is stronger for homes without updated wiring."
+  },
+  {
+    "id": 265,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a reference level in dummy encoding?",
+    "back": "The one category level left out of the set of dummy variables; coefficients on the other dummy variables are interpreted relative to this baseline level."
+  },
+  {
+    "id": 266,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why might tree-based models handle categorical variables differently than linear models?",
+    "back": "Tree-based models can often split directly on category levels without one-hot encoding, though many software implementations still expect encoded input."
+  },
+  {
+    "id": 267,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is the practical effect of standardizing before both PCA and K-means?",
+    "back": "It ensures no single variable dominates the analysis purely due to its measurement scale, so variance (in PCA) or distance (in K-means) reflects genuine patterns rather than units."
+  },
+  {
+    "id": 268,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What does cumulative variance explained mean in PCA?",
+    "back": "The running total proportion of the dataset's total variance captured by the first several principal components combined, used to decide how many components to retain."
+  },
+  {
+    "id": 269,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is a policyholder risk-segmentation use case that combines PCA and clustering?",
+    "back": "Using PCA to reduce a set of correlated rating variables to a few components, then clustering policyholders on those components to define risk segments with less redundant, standardized input."
+  },
+  {
+    "id": 270,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why is it risky to add many interaction terms without justification?",
+    "back": "Each added interaction increases model complexity and overfitting risk while reducing interpretability, so interactions should be limited to ones with a clear underlying rationale."
+  },
+  {
+    "id": 271,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is exposure, and why divide claim count by it?",
+    "back": "Exposure measures how long a policyholder has been at risk, such as years on the books; dividing claim count by exposure standardizes claim frequency across policyholders with different exposure lengths."
+  },
+  {
+    "id": 272,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "How does a dendrogram let you avoid rerunning an algorithm for every candidate cluster count?",
+    "back": "A single dendrogram encodes every possible number of clusters at once, since cutting it at different heights yields different numbers of clusters without recomputing the merge structure."
+  },
+  {
+    "id": 273,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What is one reason a candidate should always interpret PCA loadings in business language on Exam PA?",
+    "back": "A component is just a set of numbers until its loadings are translated into a meaningful business concept, such as an overall property risk axis, which graders specifically look for."
+  },
+  {
+    "id": 274,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "Why is Ward's method often a sensible default linkage choice?",
+    "back": "It tends to produce clusters that are similar in size and works well when the underlying true groups are expected to be roughly compact, unlike single linkage's tendency to chain."
+  },
+  {
+    "id": 275,
+    "domain": "data_transformations_and_unsupervised_learning",
+    "front": "What single validation step applies to both PCA-derived features and cluster assignments before using them in an actuarial project?",
+    "back": "Confirming the resulting features or groups actually relate to a business outcome of interest, such as loss ratio or claim frequency, rather than trusting statistical output alone."
+  },
+  {
+    "id": 276,
+    "domain": "generalized_linear_models",
+    "front": "What are the three components of a GLM?",
+    "back": "A random component specifying the response distribution, a systematic component (the linear predictor), and a link function connecting the mean of the response to the linear predictor."
+  },
+  {
+    "id": 277,
+    "domain": "generalized_linear_models",
+    "front": "Why is ordinary linear regression a poor fit for claim counts?",
+    "back": "Claim counts are non-negative integers with variance that changes with the mean, while ordinary regression assumes a continuous response with constant variance and can predict negative values."
+  },
+  {
+    "id": 278,
+    "domain": "generalized_linear_models",
+    "front": "Which distribution is standard for modeling claim frequency?",
+    "back": "The Poisson distribution, since it models non-negative counts and assumes the variance equals the mean."
+  },
+  {
+    "id": 279,
+    "domain": "generalized_linear_models",
+    "front": "What does it mean for a Poisson model to be overdispersed?",
+    "back": "The observed variance in the data exceeds what the mean predicts, so the simple Poisson assumption of variance equal to mean no longer holds."
+  },
+  {
+    "id": 280,
+    "domain": "generalized_linear_models",
+    "front": "Name two fixes for an overdispersed Poisson frequency model.",
+    "back": "Fit a quasi-Poisson model that scales the variance by an estimated dispersion parameter, or fit a negative binomial model that adds a separate parameter for the extra variance."
+  },
+  {
+    "id": 281,
+    "domain": "generalized_linear_models",
+    "front": "Which distribution is standard for modeling claim severity?",
+    "back": "The gamma distribution, because it is continuous, strictly positive, right-skewed, and has variance that grows with the square of the mean."
+  },
+  {
+    "id": 282,
+    "domain": "generalized_linear_models",
+    "front": "What property of the gamma distribution matches insurance severity data?",
+    "back": "A constant coefficient of variation, meaning the standard deviation grows proportionally with the mean, matching the pattern that larger expected claims have more absolute variability."
+  },
+  {
+    "id": 283,
+    "domain": "generalized_linear_models",
+    "front": "When would an actuary choose the inverse Gaussian distribution over gamma for severity?",
+    "back": "When the severity distribution has an even heavier tail than gamma implies, since inverse Gaussian variance grows with the cube of the mean rather than the square."
+  },
+  {
+    "id": 284,
+    "domain": "generalized_linear_models",
+    "front": "What business quantity is pure premium?",
+    "back": "Loss cost per unit of exposure, equal to expected claim frequency multiplied by expected claim severity."
+  },
+  {
+    "id": 285,
+    "domain": "generalized_linear_models",
+    "front": "Why is pure premium data difficult to model with a single standard distribution?",
+    "back": "Many policies have exactly zero losses, creating a point mass at zero, while policies with losses follow a continuous positive right-skewed distribution."
+  },
+  {
+    "id": 286,
+    "domain": "generalized_linear_models",
+    "front": "What distribution is used to model pure premium directly?",
+    "back": "The Tweedie distribution, which handles the point mass at zero combined with a continuous positive tail in one model."
+  },
+  {
+    "id": 287,
+    "domain": "generalized_linear_models",
+    "front": "What is the Tweedie power parameter p, and what do its endpoints represent?",
+    "back": "A parameter usually between 1 and 2 controlling the distribution shape; p equal to 1 reduces Tweedie to Poisson, and p equal to 2 reduces it to gamma."
+  },
+  {
+    "id": 288,
+    "domain": "generalized_linear_models",
+    "front": "What underlying process does a Tweedie distribution with p strictly between 1 and 2 represent?",
+    "back": "A compound Poisson-gamma process, a Poisson-distributed number of claims each with a gamma-distributed severity, summed together."
+  },
+  {
+    "id": 289,
+    "domain": "generalized_linear_models",
+    "front": "What does a Tweedie p value closer to 1 imply about the data?",
+    "back": "More Poisson-like behavior, meaning more probability mass concentrated at exactly zero."
+  },
+  {
+    "id": 290,
+    "domain": "generalized_linear_models",
+    "front": "Why has Tweedie regression become popular for pure premium modeling?",
+    "back": "It lets an actuary build a single pure premium model directly from the data rather than fitting separate frequency and severity models and multiplying the results."
+  },
+  {
+    "id": 291,
+    "domain": "generalized_linear_models",
+    "front": "Which distribution and link are standard for modeling a binary outcome like policy lapse?",
+    "back": "The binomial distribution with a logit link, giving logistic regression."
+  },
+  {
+    "id": 292,
+    "domain": "generalized_linear_models",
+    "front": "How does binomial variance behave as the probability changes?",
+    "back": "Variance equals the mean times one minus the mean, so it is largest near a probability of 0.5 and shrinks toward 0 or 1."
+  },
+  {
+    "id": 293,
+    "domain": "generalized_linear_models",
+    "front": "What is the formula for the log link function?",
+    "back": "g of mu equals the natural log of mu, connecting the mean of the response to the linear predictor."
+  },
+  {
+    "id": 294,
+    "domain": "generalized_linear_models",
+    "front": "Why does a log link guarantee positive predictions?",
+    "back": "Predictions are recovered by exponentiating the linear predictor, and the exponential function is always positive regardless of the input value."
+  },
+  {
+    "id": 295,
+    "domain": "generalized_linear_models",
+    "front": "Why is a log link called multiplicative rather than additive?",
+    "back": "Because the prediction is exp of a sum of terms, which equals a product of exp of each individual term, so each variable contributes a multiplicative factor."
+  },
+  {
+    "id": 296,
+    "domain": "generalized_linear_models",
+    "front": "What is the formula for the logit link function?",
+    "back": "g of mu equals the natural log of mu divided by one minus mu, mapping a probability between 0 and 1 onto the entire real line."
+  },
+  {
+    "id": 297,
+    "domain": "generalized_linear_models",
+    "front": "What does exponentiating a logistic regression coefficient produce?",
+    "back": "An odds ratio, the multiplicative change in the odds of the outcome associated with a one-unit change in that predictor."
+  },
+  {
+    "id": 298,
+    "domain": "generalized_linear_models",
+    "front": "What is the identity link, and when is it appropriate?",
+    "back": "g of mu equals mu, the ordinary regression link; it is rarely appropriate for insurance loss data since it allows negative predictions."
+  },
+  {
+    "id": 299,
+    "domain": "generalized_linear_models",
+    "front": "Why is a log link preferred over an identity link for severity models?",
+    "back": "Severity must remain strictly positive, and only the log link guarantees positive fitted values after back-transformation."
+  },
+  {
+    "id": 300,
+    "domain": "generalized_linear_models",
+    "front": "What is the purpose of an offset in a GLM?",
+    "back": "To scale the response so the model predicts a rate per unit of exposure rather than a raw total, without estimating a coefficient for it."
+  },
+  {
+    "id": 301,
+    "domain": "generalized_linear_models",
+    "front": "In a log-link Poisson frequency model, what offset term is added and what is its coefficient?",
+    "back": "The natural log of exposure is added to the linear predictor with its coefficient fixed at exactly 1, not estimated from the data."
+  },
+  {
+    "id": 302,
+    "domain": "generalized_linear_models",
+    "front": "If a policy is in force for 0.5 of a year instead of a full year, how does an offset model treat expected claims?",
+    "back": "It expects about half as many claims as an identical policy in force a full year, all else equal, since claim count scales with exposure."
+  },
+  {
+    "id": 303,
+    "domain": "generalized_linear_models",
+    "front": "What happens to the model if exposure is left out entirely, with no offset or predictor?",
+    "back": "Exposure differences between policies contaminate the estimated effects of every other explanatory variable in the model."
+  },
+  {
+    "id": 304,
+    "domain": "generalized_linear_models",
+    "front": "What is the purpose of a weight in a GLM, as distinct from an offset?",
+    "back": "A weight does not change what the response represents; it changes how much influence each observation has on parameter estimation by scaling the assumed variance."
+  },
+  {
+    "id": 305,
+    "domain": "generalized_linear_models",
+    "front": "When should an actuary use a weight rather than an offset?",
+    "back": "When the response variable is already an average or a rate, such as average claim severity, but different records are based on different amounts of underlying data."
+  },
+  {
+    "id": 306,
+    "domain": "generalized_linear_models",
+    "front": "In a severity model where each record is an average claim size, what is typically used as the weight?",
+    "back": "The number of claims backing up that average, so classes with more claims supporting their average get more influence in fitting."
+  },
+  {
+    "id": 307,
+    "domain": "generalized_linear_models",
+    "front": "What is the key discriminating question for choosing an offset versus a weight?",
+    "back": "Does the response variable represent a total, which calls for an offset, or an average or rate, which calls for a weight?"
+  },
+  {
+    "id": 308,
+    "domain": "generalized_linear_models",
+    "front": "Under a log link, what does a fitted coefficient represent before exponentiation?",
+    "back": "The additive change in the log of the mean response associated with a one-unit change in that predictor, holding other predictors fixed."
+  },
+  {
+    "id": 309,
+    "domain": "generalized_linear_models",
+    "front": "What does exponentiating a log-link coefficient produce?",
+    "back": "A multiplicative relativity applied to the baseline predicted value."
+  },
+  {
+    "id": 310,
+    "domain": "generalized_linear_models",
+    "front": "If a Territory coefficient for Urban is 0.3247 in a log-link Poisson model, what is the Urban relativity?",
+    "back": "exp of 0.3247, which equals approximately 1.3836, meaning Urban policies have about 1.3836 times the frequency of Rural policies."
+  },
+  {
+    "id": 311,
+    "domain": "generalized_linear_models",
+    "front": "If the baseline Rural frequency is 0.0800 claims per exposure and the Urban relativity is 1.3836, what is the fitted Urban frequency?",
+    "back": "0.0800 times 1.3836, which equals approximately 0.1107 claims per exposure."
+  },
+  {
+    "id": 312,
+    "domain": "generalized_linear_models",
+    "front": "What relativity does a coefficient of exactly zero always exponentiate to?",
+    "back": "A relativity of exactly 1, meaning no effect relative to the baseline level."
+  },
+  {
+    "id": 313,
+    "domain": "generalized_linear_models",
+    "front": "What relativity is always implied by the reference level of a categorical variable?",
+    "back": "A relativity of 1.000, even though the reference level never appears explicitly in the coefficient table."
+  },
+  {
+    "id": 314,
+    "domain": "generalized_linear_models",
+    "front": "What sign of coefficient always produces a relativity above 1 after exponentiation?",
+    "back": "A positive coefficient, since exp of any positive number is greater than 1."
+  },
+  {
+    "id": 315,
+    "domain": "generalized_linear_models",
+    "front": "What sign of coefficient always produces a relativity below 1 after exponentiation?",
+    "back": "A negative coefficient, since exp of any negative number is between 0 and 1."
+  },
+  {
+    "id": 316,
+    "domain": "generalized_linear_models",
+    "front": "How should combined main effects and an interaction term be handled before exponentiating?",
+    "back": "Add the relevant coefficients together at the linear predictor scale first, then exponentiate the sum, rather than exponentiating each piece separately and multiplying."
+  },
+  {
+    "id": 317,
+    "domain": "generalized_linear_models",
+    "front": "If Urban is 0.3247, Young Driver is 0.1823, and their interaction is negative 0.0950, what is the combined Urban Young Driver relativity?",
+    "back": "exp of (0.3247 plus 0.1823 minus 0.0950), which is exp of 0.4120, approximately 1.5099."
+  },
+  {
+    "id": 318,
+    "domain": "generalized_linear_models",
+    "front": "Why does a negative interaction coefficient reduce the combined relativity below the product of the two main-effect relativities?",
+    "back": "It captures that having both risk factors together does not compound risk as strongly as the two main effects would separately suggest."
+  },
+  {
+    "id": 319,
+    "domain": "generalized_linear_models",
+    "front": "When does multiplying two separately exponentiated main-effect relativities give the same answer as exponentiating the summed coefficients?",
+    "back": "Only when the model contains no interaction term between those two variables."
+  },
+  {
+    "id": 320,
+    "domain": "generalized_linear_models",
+    "front": "In a logistic regression with a coefficient of 0.5108 on a prior-claim indicator, what is the odds ratio?",
+    "back": "exp of 0.5108, approximately 1.6667, meaning the odds of lapsing are about 1.6667 times higher with a recent prior claim."
+  },
+  {
+    "id": 321,
+    "domain": "generalized_linear_models",
+    "front": "What is the key distinction between an odds ratio and a probability change?",
+    "back": "An odds ratio describes a multiplicative change in the odds of an outcome, not a direct multiplicative change in the probability itself."
+  },
+  {
+    "id": 322,
+    "domain": "generalized_linear_models",
+    "front": "What problem does regularized regression address?",
+    "back": "Overfitting and unstable coefficients that arise from maximum likelihood estimation when a model has many, possibly correlated, predictors."
+  },
+  {
+    "id": 323,
+    "domain": "generalized_linear_models",
+    "front": "What penalty does ridge regression add to the objective function?",
+    "back": "A penalty proportional to the sum of the squared coefficients."
+  },
+  {
+    "id": 324,
+    "domain": "generalized_linear_models",
+    "front": "Does ridge regression perform variable selection?",
+    "back": "No, ridge shrinks all coefficients toward zero but essentially never sets any coefficient to exactly zero."
+  },
+  {
+    "id": 325,
+    "domain": "generalized_linear_models",
+    "front": "What penalty does lasso regression add to the objective function?",
+    "back": "A penalty proportional to the sum of the absolute values of the coefficients."
+  },
+  {
+    "id": 326,
+    "domain": "generalized_linear_models",
+    "front": "What makes lasso useful for variable selection?",
+    "back": "Its penalty shape can shrink some coefficients all the way to exactly zero, effectively removing those variables from the model."
+  },
+  {
+    "id": 327,
+    "domain": "generalized_linear_models",
+    "front": "What is elastic net regression?",
+    "back": "A method combining both the ridge and lasso penalties, using a mixing parameter that controls the balance between the two."
+  },
+  {
+    "id": 328,
+    "domain": "generalized_linear_models",
+    "front": "In elastic net, what does an alpha of 1 correspond to, and what does an alpha of 0 correspond to?",
+    "back": "Alpha of 1 is pure lasso, and alpha of 0 is pure ridge."
+  },
+  {
+    "id": 329,
+    "domain": "generalized_linear_models",
+    "front": "Why might elastic net be preferred over pure lasso when predictors are correlated?",
+    "back": "Pure lasso tends to arbitrarily pick one variable from a correlated group and zero out the rest, while elastic net tends to keep or drop correlated groups together."
+  },
+  {
+    "id": 330,
+    "domain": "generalized_linear_models",
+    "front": "What hyperparameter controls the strength of a regularization penalty?",
+    "back": "Lambda, which is not estimated by maximum likelihood alongside the coefficients and must be chosen separately."
+  },
+  {
+    "id": 331,
+    "domain": "generalized_linear_models",
+    "front": "What method is standard for choosing the regularization hyperparameter lambda?",
+    "back": "K-fold cross-validation, selecting the lambda that minimizes average validation error across the folds."
+  },
+  {
+    "id": 332,
+    "domain": "generalized_linear_models",
+    "front": "What model results when lambda equals exactly zero in a regularized regression?",
+    "back": "The unregularized model, since the penalty term contributes nothing."
+  },
+  {
+    "id": 333,
+    "domain": "generalized_linear_models",
+    "front": "What happens to a regularized model as lambda grows very large?",
+    "back": "Coefficients are pushed toward zero and the model becomes simpler, eventually approaching an intercept-only model."
+  },
+  {
+    "id": 334,
+    "domain": "generalized_linear_models",
+    "front": "Why might an actuary choose a lambda slightly larger than the one that minimizes cross-validation error?",
+    "back": "A larger lambda within one standard error of the minimum often yields a simpler, more interpretable model at nearly the same predictive accuracy."
+  },
+  {
+    "id": 335,
+    "domain": "generalized_linear_models",
+    "front": "How does k-fold cross-validation work?",
+    "back": "The data is split into k roughly equal folds; the model is trained k times, each time leaving out one fold for validation, and validation error is averaged across all k runs."
+  },
+  {
+    "id": 336,
+    "domain": "generalized_linear_models",
+    "front": "Why is a train and test split alone sometimes insufficient for model validation?",
+    "back": "It sacrifices a large portion of the data as a held-out test set, which can be wasteful when the overall data set is not large."
+  },
+  {
+    "id": 337,
+    "domain": "generalized_linear_models",
+    "front": "What advantage does k-fold cross-validation have over a single train and test split?",
+    "back": "It uses every observation for both training and validation at some point, without ever validating a model run on data used to fit that same run."
+  },
+  {
+    "id": 338,
+    "domain": "generalized_linear_models",
+    "front": "What is deviance in the context of a GLM?",
+    "back": "The standard goodness-of-fit measure for a GLM, generalizing residual sum of squares to any exponential family distribution, where lower deviance indicates better fit."
+  },
+  {
+    "id": 339,
+    "domain": "generalized_linear_models",
+    "front": "Why can deviance alone not be used to compare models with different numbers of predictors?",
+    "back": "Deviance almost always decreases when a variable is added, even a useless one, so it rewards complexity regardless of true improvement."
+  },
+  {
+    "id": 340,
+    "domain": "generalized_linear_models",
+    "front": "What is AIC, and what does it add to a model's fit measure?",
+    "back": "The Akaike Information Criterion, which adds a penalty for the number of parameters used so added complexity must earn its place."
+  },
+  {
+    "id": 341,
+    "domain": "generalized_linear_models",
+    "front": "What is BIC, and how does its penalty differ from AIC's?",
+    "back": "The Bayesian Information Criterion; its penalty per parameter grows with the natural log of the sample size, penalizing extra parameters more heavily than AIC in most realistic sample sizes."
+  },
+  {
+    "id": 342,
+    "domain": "generalized_linear_models",
+    "front": "When AIC and BIC disagree on model selection, which tends to favor a smaller model?",
+    "back": "BIC, because of its heavier penalty per additional parameter."
+  },
+  {
+    "id": 343,
+    "domain": "generalized_linear_models",
+    "front": "How should a candidate select among several candidate GLMs using AIC or BIC?",
+    "back": "Choose the model with the lowest AIC or BIC value, since lower values indicate a preferred balance of fit and complexity."
+  },
+  {
+    "id": 344,
+    "domain": "generalized_linear_models",
+    "front": "What is a lift chart?",
+    "back": "A graphical validation tool where test-set policies are sorted by predicted value, grouped into buckets such as deciles, and average predicted versus actual values are plotted per bucket."
+  },
+  {
+    "id": 345,
+    "domain": "generalized_linear_models",
+    "front": "What does a well-performing lift chart look like?",
+    "back": "Predicted and actual values track closely together and rise steadily and monotonically from the lowest bucket to the highest."
+  },
+  {
+    "id": 346,
+    "domain": "generalized_linear_models",
+    "front": "What is a double lift chart used for?",
+    "back": "Comparing two competing models directly against each other, rather than each against actual data separately."
+  },
+  {
+    "id": 347,
+    "domain": "generalized_linear_models",
+    "front": "How are policies grouped in a double lift chart?",
+    "back": "By the ratio of one model's prediction to the other model's prediction, then grouped into buckets, with actual losses plotted alongside both models' predictions."
+  },
+  {
+    "id": 348,
+    "domain": "generalized_linear_models",
+    "front": "In a double lift chart, how is the better model identified?",
+    "back": "The model whose predicted curve tracks the actual curve more closely across the buckets, especially at the extremes, is the better-differentiating model."
+  },
+  {
+    "id": 349,
+    "domain": "generalized_linear_models",
+    "front": "What does the Gini index measure?",
+    "back": "A model's ability to rank-order risks correctly, summarized as a single number between 0 and 1, with higher values indicating better discrimination."
+  },
+  {
+    "id": 350,
+    "domain": "generalized_linear_models",
+    "front": "How is the Gini index typically constructed?",
+    "back": "By sorting policies by predicted risk and plotting cumulative share of actual losses captured against cumulative share of exposure."
+  },
+  {
+    "id": 351,
+    "domain": "generalized_linear_models",
+    "front": "What is the exponential family, and why does it matter for GLMs?",
+    "back": "A class of probability distributions including Poisson, gamma, binomial, and Tweedie, whose shared mathematical structure allows a single unified GLM fitting framework."
+  },
+  {
+    "id": 352,
+    "domain": "generalized_linear_models",
+    "front": "What is the linear predictor in a GLM, commonly denoted eta?",
+    "back": "The intercept plus the sum of coefficients times explanatory variables, before any link transformation is applied."
+  },
+  {
+    "id": 353,
+    "domain": "generalized_linear_models",
+    "front": "How is a fitted mean mu recovered from the linear predictor eta under a log link?",
+    "back": "mu equals exp of eta, since the log link states that ln of mu equals eta."
+  },
+  {
+    "id": 354,
+    "domain": "generalized_linear_models",
+    "front": "In an offset model where ln(mu) equals ln(exposure) plus eta, what does exp(eta) represent?",
+    "back": "The expected claim frequency per unit of exposure, which is the quantity actuaries actually want to price."
+  },
+  {
+    "id": 355,
+    "domain": "generalized_linear_models",
+    "front": "Why does a gamma GLM with claim-count weights give the same estimates as fitting to individual claim-level data?",
+    "back": "Weighting by claim count effectively reconstructs the information content of the disaggregated data, a property relied on when only aggregated exhibits are available."
+  },
+  {
+    "id": 356,
+    "domain": "generalized_linear_models",
+    "front": "For an auto insurer studying claims per policy-year, which distribution and link are typical?",
+    "back": "Poisson distribution with a log link, since the response is a non-negative count and predictions must stay positive."
+  },
+  {
+    "id": 357,
+    "domain": "generalized_linear_models",
+    "front": "For a workers compensation insurer modeling average indemnity claim cost, which distribution and link are typical?",
+    "back": "Gamma distribution with a log link, since severity is continuous, strictly positive, and right-skewed."
+  },
+  {
+    "id": 358,
+    "domain": "generalized_linear_models",
+    "front": "What diagnostic suggests a Poisson frequency model is overdispersed?",
+    "back": "A variance-to-mean ratio well above 1 in the observed data compared to what a plain Poisson model assumes."
+  },
+  {
+    "id": 359,
+    "domain": "generalized_linear_models",
+    "front": "What is a relativity, in the context of an actuarial rating plan?",
+    "back": "A single multiplicative factor applied to a base rate to reflect the effect of one rating variable's level."
+  },
+  {
+    "id": 360,
+    "domain": "generalized_linear_models",
+    "front": "Why is a log-link GLM particularly well suited to building a rating algorithm?",
+    "back": "Its multiplicative structure lets each rating variable's effect be expressed as a relativity, matching how base rates and factors are communicated to regulators and underwriters."
+  },
+  {
+    "id": 361,
+    "domain": "generalized_linear_models",
+    "front": "What is the reference level of a categorical predictor in a GLM?",
+    "back": "The baseline level against which all other levels of that variable are compared, absorbed into the model's intercept."
+  },
+  {
+    "id": 362,
+    "domain": "generalized_linear_models",
+    "front": "Why does the exam favor Tweedie regression over separate frequency and severity models for pure premium tasks?",
+    "back": "Tweedie builds one model directly from the pure premium response, avoiding the extra step of fitting two models and multiplying their predictions together."
+  },
+  {
+    "id": 363,
+    "domain": "generalized_linear_models",
+    "front": "What kind of variable is claim frequency, in terms of data type?",
+    "back": "A count variable, taking non-negative integer values such as 0, 1, 2, and so on."
+  },
+  {
+    "id": 364,
+    "domain": "generalized_linear_models",
+    "front": "What kind of variable is claim severity, in terms of data type?",
+    "back": "A continuous, strictly positive variable, typically right-skewed with a long tail of large losses."
+  },
+  {
+    "id": 365,
+    "domain": "generalized_linear_models",
+    "front": "What kind of variable is a fraud flag, in terms of data type?",
+    "back": "A binary variable, taking only the values 0 or 1."
+  },
+  {
+    "id": 366,
+    "domain": "generalized_linear_models",
+    "front": "How does negative binomial regression differ from Poisson regression in its variance assumption?",
+    "back": "Negative binomial adds a separate dispersion parameter so variance can exceed the mean, while Poisson forces variance to equal the mean exactly."
+  },
+  {
+    "id": 367,
+    "domain": "generalized_linear_models",
+    "front": "What does a quasi-Poisson model do differently from a standard Poisson model?",
+    "back": "It keeps the same mean structure as Poisson but scales the variance estimate by an estimated dispersion parameter to account for overdispersion."
+  },
+  {
+    "id": 368,
+    "domain": "generalized_linear_models",
+    "front": "What is the practical consequence of choosing gamma over inverse Gaussian for a severity model with a moderately heavy tail?",
+    "back": "Gamma assumes variance grows with the square of the mean, which is usually adequate unless the tail is unusually heavy, where inverse Gaussian's cubic variance growth fits better."
+  },
+  {
+    "id": 369,
+    "domain": "generalized_linear_models",
+    "front": "Why can a Tweedie model handle policies with exactly zero losses without a separate zero-inflation component?",
+    "back": "The Tweedie distribution places genuine probability mass exactly at zero when p is between 1 and 2, matching policies with no claims at all."
+  },
+  {
+    "id": 370,
+    "domain": "generalized_linear_models",
+    "front": "In business terms, what does an offset let a candidate say about a fitted frequency model?",
+    "back": "That the model predicts claims per unit of exposure directly, rather than raw claim totals that depend on how long each policy was in force."
+  },
+  {
+    "id": 371,
+    "domain": "generalized_linear_models",
+    "front": "Why should exposure never be entered as an ordinary predictor with an estimated coefficient in a frequency model?",
+    "back": "Because the relationship between claims and exposure is definitionally proportional, and forcing the model to estimate that coefficient wastes a degree of freedom on a relationship already known to be 1 to 1."
+  },
+  {
+    "id": 372,
+    "domain": "generalized_linear_models",
+    "front": "What happens to model interpretation when weights, rather than an offset, are used incorrectly for a raw count response?",
+    "back": "The model would treat the response as already representing a rate when it is really a total, misestimating the effect of every explanatory variable."
+  },
+  {
+    "id": 373,
+    "domain": "generalized_linear_models",
+    "front": "How do you convert a fitted log-link coefficient into a percentage change interpretation?",
+    "back": "Exponentiate the coefficient to get the relativity, then subtract 1 and multiply by 100 to express it as a percentage increase or decrease from baseline."
+  },
+  {
+    "id": 374,
+    "domain": "generalized_linear_models",
+    "front": "If a coefficient of 0.1 gives a relativity of exp(0.1), approximately 1.105, what percentage increase does this represent?",
+    "back": "Approximately a 10.5 percent increase over the baseline level."
+  },
+  {
+    "id": 375,
+    "domain": "generalized_linear_models",
+    "front": "Why do actuaries prefer expressing GLM output as relativities rather than raw coefficients when presenting to underwriters?",
+    "back": "Relativities are directly interpretable as multiplicative rating factors, matching how underwriters and rating manuals already express risk adjustments."
+  },
+  {
+    "id": 376,
+    "domain": "generalized_linear_models",
+    "front": "What is the effect of adding an interaction term on the main effect coefficients already in the model?",
+    "back": "The main effect coefficients now represent the effect of that variable only when the other interacting variable is at its reference level, not an average effect across all levels."
+  },
+  {
+    "id": 377,
+    "domain": "generalized_linear_models",
+    "front": "Why might a candidate include an interaction term between Territory and Vehicle Type in an auto frequency model?",
+    "back": "If the effect of vehicle type on frequency genuinely differs by territory, a model without the interaction would misstate the combined risk for some Territory and Vehicle Type combinations."
+  },
+  {
+    "id": 378,
+    "domain": "generalized_linear_models",
+    "front": "What is a common mistake candidates make with interaction terms during the written exam?",
+    "back": "Exponentiating each main effect separately and multiplying, instead of summing the coefficients including the interaction term first and then exponentiating."
+  },
+  {
+    "id": 379,
+    "domain": "generalized_linear_models",
+    "front": "What does regularization trade off to improve predictive performance?",
+    "back": "A small amount of added bias in exchange for a meaningful reduction in variance, usually improving performance on new, unseen data."
+  },
+  {
+    "id": 380,
+    "domain": "generalized_linear_models",
+    "front": "Why can ordinary maximum likelihood estimation become unstable with many correlated predictors?",
+    "back": "Correlated predictors make it hard to separate their individual effects, inflating standard errors and producing coefficients that vary wildly with small changes in the data."
+  },
+  {
+    "id": 381,
+    "domain": "generalized_linear_models",
+    "front": "What is the practical effect of choosing a very small lambda in a regularized model?",
+    "back": "The model behaves close to the unregularized fit, retaining nearly all variables with minimal shrinkage."
+  },
+  {
+    "id": 382,
+    "domain": "generalized_linear_models",
+    "front": "What is the practical effect of choosing a very large lambda in a regularized model?",
+    "back": "Nearly all coefficients are shrunk close to zero, producing an overly simple model that may underfit the data."
+  },
+  {
+    "id": 383,
+    "domain": "generalized_linear_models",
+    "front": "Why is choosing lambda by minimizing training error alone a mistake?",
+    "back": "A lambda of zero always minimizes training error, since it recovers the unregularized model, which defeats the purpose of regularization; lambda must be chosen using held-out validation performance."
+  },
+  {
+    "id": 384,
+    "domain": "generalized_linear_models",
+    "front": "What does the one-standard-error rule accomplish when selecting lambda from a cross-validation curve?",
+    "back": "It selects a somewhat larger, simpler lambda whose validation error is still within one standard error of the true minimum, favoring interpretability without meaningfully sacrificing accuracy."
+  },
+  {
+    "id": 385,
+    "domain": "generalized_linear_models",
+    "front": "Why is a held-out test set essential before reporting a final model's performance?",
+    "back": "Metrics computed on training data overstate performance because the model has already seen and adapted to that data; a held-out test set was never used in fitting."
+  },
+  {
+    "id": 386,
+    "domain": "generalized_linear_models",
+    "front": "What is the relationship between deviance and the residual sum of squares used in ordinary regression?",
+    "back": "Deviance generalizes residual sum of squares to any exponential family distribution, reducing to it exactly in the normal distribution case."
+  },
+  {
+    "id": 387,
+    "domain": "generalized_linear_models",
+    "front": "If Model A has lower deviance but more parameters than Model B, is Model A automatically better?",
+    "back": "Not necessarily; lower deviance alone does not account for the added complexity, so AIC or BIC should be used to compare them fairly."
+  },
+  {
+    "id": 388,
+    "domain": "generalized_linear_models",
+    "front": "What information does a lift chart provide that AIC or BIC does not?",
+    "back": "A direct, visual, business-relevant check of how well the model separates low-risk from high-risk policies in actual held-out experience."
+  },
+  {
+    "id": 389,
+    "domain": "generalized_linear_models",
+    "front": "In a lift chart, what does it mean if the actual line is flat across buckets while the predicted line rises steeply?",
+    "back": "The model believes it is separating risk levels well, but the actual experience shows the model's ranking does not correspond to real differences in outcomes, a sign of poor calibration."
+  },
+  {
+    "id": 390,
+    "domain": "generalized_linear_models",
+    "front": "Why is a double lift chart specifically useful when replacing a model already in production?",
+    "back": "It directly shows whether the proposed new model differentiates risk better than the existing model, which is the exact justification needed to support a model change."
+  },
+  {
+    "id": 391,
+    "domain": "generalized_linear_models",
+    "front": "What does a Gini index of 0 indicate about a model?",
+    "back": "No discriminatory power at all, equivalent to random ranking of policies by risk."
+  },
+  {
+    "id": 392,
+    "domain": "generalized_linear_models",
+    "front": "What does a Gini index closer to 1 indicate about a model?",
+    "back": "Strong discriminatory power, meaning the model ranks high-risk and low-risk policies very accurately."
+  },
+  {
+    "id": 393,
+    "domain": "generalized_linear_models",
+    "front": "Why might an actuary use the Gini index alongside a lift chart rather than instead of one?",
+    "back": "The Gini index gives a single summary number for quick comparison across many candidate models, while the lift chart shows the full shape of performance across risk buckets."
+  },
+  {
+    "id": 394,
+    "domain": "generalized_linear_models",
+    "front": "How should a candidate describe a GLM's response distribution choice in a written exam answer for a non-technical audience?",
+    "back": "In plain terms tied to the business problem, for example explaining that claim counts are modeled with Poisson because counts cannot be negative and vary in a specific, predictable way."
+  },
+  {
+    "id": 395,
+    "domain": "generalized_linear_models",
+    "front": "Why does the real Exam PA rarely ask candidates to compute GLM output entirely from scratch?",
+    "back": "Because the exam provides R or Excel output such as coefficient tables and lift charts already generated, and instead tests interpretation and business judgment."
+  },
+  {
+    "id": 396,
+    "domain": "generalized_linear_models",
+    "front": "What is the most important translation skill tested by GLM tasks on the real exam?",
+    "back": "Converting a fitted statistical model's output into a concrete, defensible business recommendation understandable by a non-technical audience."
+  },
+  {
+    "id": 397,
+    "domain": "generalized_linear_models",
+    "front": "Give an example of a binary response variable commonly modeled with logistic regression in insurance.",
+    "back": "Whether a policyholder lapses their policy within a given renewal period."
+  },
+  {
+    "id": 398,
+    "domain": "generalized_linear_models",
+    "front": "Give an example of a Tweedie modeling application in insurance.",
+    "back": "Modeling homeowners pure premium directly, where many policies have zero losses and others have a continuous positive loss amount."
+  },
+  {
+    "id": 399,
+    "domain": "generalized_linear_models",
+    "front": "What is the practical reason a candidate should always check whether exposure varies across policies before fitting a frequency model?",
+    "back": "Unequal exposure periods across policies must be accounted for, typically via an offset, or the model's estimated effects for other variables will be biased."
+  },
+  {
+    "id": 400,
+    "domain": "generalized_linear_models",
+    "front": "How does adding a weight change the effective variance assumed for an observation in a GLM?",
+    "back": "A higher weight reduces the assumed variance for that observation, giving it more influence on the fitted coefficients relative to observations with lower weights."
+  },
+  {
+    "id": 401,
+    "domain": "generalized_linear_models",
+    "front": "What is a candidate risk of relying only on AIC without also checking a lift chart?",
+    "back": "AIC measures statistical fit adjusted for complexity but does not directly show whether the model actually separates risk well in a business-relevant, visual sense."
+  },
+  {
+    "id": 402,
+    "domain": "generalized_linear_models",
+    "front": "Why is deviance alone insufficient even when comparing models with the same number of parameters?",
+    "back": "It is not insufficient in that case; deviance alone is a valid comparison only when the number of parameters is equal, since no complexity adjustment is then needed."
+  },
+  {
+    "id": 403,
+    "domain": "generalized_linear_models",
+    "front": "What role does cross-validation play beyond choosing regularization hyperparameters?",
+    "back": "It also provides an honest estimate of how any candidate model, regularized or not, will perform on new data before final model selection."
+  },
+  {
+    "id": 404,
+    "domain": "generalized_linear_models",
+    "front": "Why would an actuary choose ridge regression over lasso when most predictors are believed to be genuinely relevant?",
+    "back": "Ridge stabilizes and shrinks all coefficients without eliminating any variable, which is preferable when there is no strong reason to believe any predictor is truly useless."
+  },
+  {
+    "id": 405,
+    "domain": "generalized_linear_models",
+    "front": "Why would an actuary choose lasso over ridge when many candidate predictors are suspected to be irrelevant?",
+    "back": "Lasso can shrink irrelevant predictors' coefficients all the way to zero, automatically producing a simpler, more interpretable model."
+  },
+  {
+    "id": 406,
+    "domain": "generalized_linear_models",
+    "front": "What is the practical business benefit of a sparser model produced by lasso or elastic net?",
+    "back": "Fewer variables make the rating plan easier to explain to regulators, underwriters, and other stakeholders, and easier to maintain over time."
+  },
+  {
+    "id": 407,
+    "domain": "generalized_linear_models",
+    "front": "In the Territory example, what is the relativity if the fitted coefficient for a level were exactly negative 0.2231?",
+    "back": "exp of negative 0.2231, approximately 0.8000, meaning that level has 80 percent of the baseline frequency."
+  },
+  {
+    "id": 408,
+    "domain": "generalized_linear_models",
+    "front": "Why is it important to hold all other variables fixed when interpreting a single coefficient in a GLM?",
+    "back": "GLM coefficients describe the isolated effect of one variable controlling for the others in the model, not the raw unconditional relationship between that variable and the response."
+  },
+  {
+    "id": 409,
+    "domain": "generalized_linear_models",
+    "front": "What kind of exam question typically follows a coefficient table listing several categorical variable levels?",
+    "back": "A question asking the candidate to calculate the combined fitted rate or relativity for a specific policy profile by summing the relevant coefficients and exponentiating."
+  },
+  {
+    "id": 410,
+    "domain": "generalized_linear_models",
+    "front": "How should the reference level's relativity be treated when calculating a combined relativity for a policy at all baseline levels?",
+    "back": "It contributes a relativity of exactly 1 for every variable at its reference level, so the baseline policy's total relativity is 1, equal to the model's baseline rate."
+  },
+  {
+    "id": 411,
+    "domain": "generalized_linear_models",
+    "front": "What is the danger of interpreting a Tweedie model's fitted value as if it always represents a nonzero claim?",
+    "back": "The fitted value is an expected pure premium averaged across all outcomes including the possibility of zero loss, not a prediction that a claim will definitely occur."
+  },
+  {
+    "id": 412,
+    "domain": "generalized_linear_models",
+    "front": "Why might a workers compensation actuary prefer a gamma severity model with claim-count weights over an unweighted model?",
+    "back": "Unweighted fitting would let a class with very few claims and a noisy average severity distort the fitted relationship as much as a well-supported class with many claims."
+  },
+  {
+    "id": 413,
+    "domain": "generalized_linear_models",
+    "front": "What distinguishes a systematic component from a random component in a GLM?",
+    "back": "The systematic component is the linear predictor built from explanatory variables and coefficients, while the random component specifies the probability distribution assumed for the response."
+  },
+  {
+    "id": 414,
+    "domain": "generalized_linear_models",
+    "front": "How does a candidate justify choosing logistic regression over linear regression for a claim fraud model?",
+    "back": "The outcome is binary, so logistic regression's logit link keeps predicted probabilities between 0 and 1, unlike linear regression which can predict values outside that range."
+  },
+  {
+    "id": 415,
+    "domain": "generalized_linear_models",
+    "front": "What happens to a fitted probability from a logistic regression as the linear predictor approaches very large positive values?",
+    "back": "The fitted probability approaches 1, since the logit link's inverse transformation asymptotically approaches but never exceeds 1."
+  },
+  {
+    "id": 416,
+    "domain": "generalized_linear_models",
+    "front": "What happens to a fitted probability from a logistic regression as the linear predictor approaches very large negative values?",
+    "back": "The fitted probability approaches 0, asymptotically, never going below it."
+  },
+  {
+    "id": 417,
+    "domain": "generalized_linear_models",
+    "front": "Why is it misleading to describe an odds ratio of 1.6667 as a 66.67 percent increase in probability?",
+    "back": "An odds ratio describes a change in odds, not probability directly, and the actual probability change depends on the baseline probability level, which is generally smaller than the odds change suggests."
+  },
+  {
+    "id": 418,
+    "domain": "generalized_linear_models",
+    "front": "What is one clear sign that a lasso model has performed variable selection compared to the full model?",
+    "back": "Some coefficients in the lasso output are exactly zero, indicating those variables were effectively dropped from the model."
+  },
+  {
+    "id": 419,
+    "domain": "generalized_linear_models",
+    "front": "How would a candidate defend using elastic net over lasso when the exhibit shows several highly correlated territory-level variables?",
+    "back": "Elastic net tends to retain or shrink correlated groups of variables together instead of arbitrarily keeping only one and dropping the rest, which better represents the shared information across correlated territories."
+  },
+  {
+    "id": 420,
+    "domain": "generalized_linear_models",
+    "front": "What should a candidate check first when an exam exhibit shows two candidate GLMs with different response distributions for the same business problem?",
+    "back": "Whether the response variable's actual shape, such as counts, positive continuous values, or a point mass at zero, matches the assumptions of each candidate distribution."
+  },
+  {
+    "id": 421,
+    "domain": "generalized_linear_models",
+    "front": "Why is Poisson regression with a log link considered the natural starting point for auto claim frequency modeling?",
+    "back": "Claim counts are non-negative integers, and the log link ensures fitted frequencies stay positive while allowing multiplicative rating relativities."
+  },
+  {
+    "id": 422,
+    "domain": "generalized_linear_models",
+    "front": "What warning sign in a coefficient table might suggest multicollinearity among predictors?",
+    "back": "Unusually large standard errors or coefficients with unexpected signs that flip when a similar, correlated variable is added or removed from the model."
+  },
+  {
+    "id": 423,
+    "domain": "generalized_linear_models",
+    "front": "How does a candidate connect a low AIC value back to a business recommendation in a written response?",
+    "back": "By stating that the model with the lowest AIC balances predictive accuracy against complexity, and recommending it as the model expected to generalize best to new policies."
+  },
+  {
+    "id": 424,
+    "domain": "generalized_linear_models",
+    "front": "Why should exam candidates verify their arithmetic when exponentiating coefficients under time pressure?",
+    "back": "A small arithmetic slip in the exponentiation step produces a materially wrong relativity, which can undermine an otherwise sound written explanation of the model."
+  },
+  {
+    "id": 425,
+    "domain": "generalized_linear_models",
+    "front": "What single theme ties together response distribution choice, offsets versus weights, coefficient interpretation, and model validation on Exam PA?",
+    "back": "Translating a fitted GLM into decisions and explanations a real insurance business can act on, always grounded in correct statistical reasoning."
+  },
+  {
+    "id": 426,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is a decision tree?",
+    "back": "A predictive model that splits data into groups using a sequence of yes/no questions about the predictors, giving every observation in the same terminal leaf the same prediction."
+  },
+  {
+    "id": 427,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is a terminal node (leaf)?",
+    "back": "A node at the end of a branch of a tree that is not split further. All observations reaching that leaf get the same predicted value."
+  },
+  {
+    "id": 428,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How is the prediction in a regression tree leaf calculated?",
+    "back": "It is the average of the target variable across all training observations that fall into that leaf."
+  },
+  {
+    "id": 429,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How is the prediction in a classification tree leaf calculated?",
+    "back": "It is the most common class among training observations in that leaf, or the class proportions used as estimated probabilities."
+  },
+  {
+    "id": 430,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is recursive binary splitting?",
+    "back": "The greedy algorithm used to grow a tree, which at each step picks the single predictor and split point that most improves the fit, without looking ahead to future splits."
+  },
+  {
+    "id": 431,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why is tree-growing called a greedy algorithm?",
+    "back": "Because it always chooses the best split available at the current step, without considering whether a different choice now might lead to a better overall tree later."
+  },
+  {
+    "id": 432,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What criterion does a regression tree usually minimize when choosing a split?",
+    "back": "The residual sum of squares, summed across the two branches created by the split."
+  },
+  {
+    "id": 433,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Name the three common splitting criteria for classification trees.",
+    "back": "Classification error rate, the Gini index, and entropy (cross-entropy)."
+  },
+  {
+    "id": 434,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the Gini index?",
+    "back": "A measure of node impurity equal to the sum over all classes of the class proportion times one minus that proportion; it is small for a pure node and large for a mixed node."
+  },
+  {
+    "id": 435,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is entropy in the context of classification trees?",
+    "back": "A measure of node impurity equal to the negative sum over all classes of the class proportion times the log of that proportion, behaving numerically similarly to the Gini index."
+  },
+  {
+    "id": 436,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why are Gini index and entropy preferred over classification error rate for growing a tree?",
+    "back": "They are more sensitive to node purity and produce better splits during tree construction, while classification error rate is better used to evaluate a finished tree's accuracy."
+  },
+  {
+    "id": 437,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What happens if a tree is grown without any limit?",
+    "back": "It overfits the training data, splitting until leaves are very small and the tree has essentially memorized noise rather than signal, which generalizes poorly to new data."
+  },
+  {
+    "id": 438,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is cost-complexity pruning?",
+    "back": "A technique that grows a large tree first, then prunes it back by penalizing the number of terminal nodes, using a tuning parameter often called alpha."
+  },
+  {
+    "id": 439,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What does alpha equal to zero produce in cost-complexity pruning?",
+    "back": "The full, unpruned tree, since there is no penalty applied for having additional terminal nodes."
+  },
+  {
+    "id": 440,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How is the optimal value of alpha chosen?",
+    "back": "Using cross-validation: for each candidate alpha, the tree is grown and pruned on training folds and tested on a held-out fold, and the alpha with the lowest average cross-validated error is selected."
+  },
+  {
+    "id": 441,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why is a lower training error alone not evidence of a better tree?",
+    "back": "A deeper, more complex tree will almost always fit the training data better, but that improvement can reflect overfitting rather than genuinely better predictive ability on new data."
+  },
+  {
+    "id": 442,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Give an actuarial example of a classification tree.",
+    "back": "An auto insurer flagging potentially fraudulent claims by splitting on indicators such as time between policy inception and claim filing, prior claims history, and reported loss relative to vehicle value."
+  },
+  {
+    "id": 443,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is a strength of single decision trees regarding predictor types?",
+    "back": "Trees handle both numeric and categorical predictors directly, without requiring dummy variable encoding."
+  },
+  {
+    "id": 444,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the main weakness of a single decision tree?",
+    "back": "High variance: a small change in the training data can produce a very different tree structure, and single trees generally predict less accurately than ensemble methods."
+  },
+  {
+    "id": 445,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is bagging?",
+    "back": "Bootstrap aggregating: a technique that grows many full, unpruned trees on separate bootstrap samples of the training data and averages (or votes on) their predictions to reduce variance."
+  },
+  {
+    "id": 446,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How is a bootstrap sample generated?",
+    "back": "By randomly drawing observations from the training data with replacement, typically producing a resample the same size as the original data set."
+  },
+  {
+    "id": 447,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How is the final prediction formed in bagging for a regression problem?",
+    "back": "By averaging the predictions from all the individual trees grown on the different bootstrap samples."
+  },
+  {
+    "id": 448,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How is the final prediction formed in bagging for a classification problem?",
+    "back": "Usually by majority vote across all the trees, though averaging predicted class probabilities is also used."
+  },
+  {
+    "id": 449,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why are individual trees in bagging left unpruned?",
+    "back": "Because averaging many high-variance, low-bias trees reduces variance directly, so pruning each individual tree is no longer necessary."
+  },
+  {
+    "id": 450,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Does adding more trees to a bagged ensemble cause overfitting?",
+    "back": "No. Unlike a single tree, adding more trees to a bagged ensemble does not itself cause overfitting; it only improves the variance-reduction benefit."
+  },
+  {
+    "id": 451,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is an out-of-bag (OOB) observation?",
+    "back": "An observation from the original training data that was not selected into a given tree's bootstrap sample, and so was left out of that particular tree's training."
+  },
+  {
+    "id": 452,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Roughly what fraction of observations are out-of-bag for a given bootstrap sample?",
+    "back": "About one-third, since on average only about two-thirds of the original observations appear in any single bootstrap sample of the same size."
+  },
+  {
+    "id": 453,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the OOB error estimate used for?",
+    "back": "It estimates a bagged model's out-of-sample (test) error by comparing each observation's predictions, made only from the trees for which it was out-of-bag, to its actual value, without needing a separate validation set."
+  },
+  {
+    "id": 454,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the key difference between a random forest and plain bagging?",
+    "back": "At each split, a random forest considers only a random subset of predictors rather than all available predictors."
+  },
+  {
+    "id": 455,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is mtry?",
+    "back": "The tuning parameter specifying how many predictors are randomly considered at each split in a random forest."
+  },
+  {
+    "id": 456,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is a common default value for mtry in classification problems?",
+    "back": "The square root of the total number of predictors."
+  },
+  {
+    "id": 457,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is a common default value for mtry in regression problems?",
+    "back": "One-third of the total number of predictors."
+  },
+  {
+    "id": 458,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why does restricting predictors at each split improve on plain bagging?",
+    "back": "It prevents a single dominant predictor from being chosen for the top split of nearly every tree, which decorrelates the trees so their averaged predictions achieve a greater reduction in variance."
+  },
+  {
+    "id": 459,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What happens to bagged trees if one predictor is very strong?",
+    "back": "Most or all of the bagged trees tend to use that predictor for their top split, making the trees highly correlated with each other and reducing the benefit of averaging."
+  },
+  {
+    "id": 460,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why does averaging correlated trees reduce variance less than averaging independent trees?",
+    "back": "Correlated errors do not cancel out as effectively as independent errors when predictions are averaged together."
+  },
+  {
+    "id": 461,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Name two ways to measure variable importance in a random forest.",
+    "back": "Total reduction in the split criterion (RSS or Gini index) attributable to a predictor across all trees, and the increase in OOB error when a predictor's values are randomly permuted."
+  },
+  {
+    "id": 462,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How does the permutation-based variable importance measure work?",
+    "back": "The values of one predictor are randomly shuffled in the OOB data, and the resulting increase in OOB error is recorded; a larger increase indicates a more important predictor."
+  },
+  {
+    "id": 463,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Give an actuarial example of a random forest application.",
+    "back": "Predicting policyholder churn (lapse), using variable importance to identify tenure, premium change at renewal, and prior claims count as the top drivers."
+  },
+  {
+    "id": 464,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is boosting?",
+    "back": "An ensemble method that builds trees sequentially, where each new tree is specifically fit to correct the errors made by the trees already built."
+  },
+  {
+    "id": 465,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How does boosting differ structurally from bagging?",
+    "back": "Bagging builds trees independently and in parallel on separate bootstrap samples; boosting builds trees sequentially, each depending on the residuals left by the prior trees."
+  },
+  {
+    "id": 466,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "In gradient boosting, what is each new tree fit to?",
+    "back": "The current residuals: what remains after subtracting the current model's predictions from the actual target values, rather than the original target itself."
+  },
+  {
+    "id": 467,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the shrinkage parameter (learning rate) in boosting?",
+    "back": "A small positive number, often between 0.001 and 0.1, that scales down each new tree's contribution before it is added to the running model."
+  },
+  {
+    "id": 468,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What tradeoff does the shrinkage parameter create?",
+    "back": "Smaller shrinkage values usually require more trees to reach the same fit, but the slower learning process often produces a better final model."
+  },
+  {
+    "id": 469,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is interaction depth in boosting?",
+    "back": "The number of splits allowed in each individual tree added during the boosting process."
+  },
+  {
+    "id": 470,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is a stump?",
+    "back": "A tree with a single split, often used as the individual tree type in boosting, since flexibility is built up through many sequential small trees rather than one complex tree."
+  },
+  {
+    "id": 471,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why can boosting overfit if given too many trees?",
+    "back": "Each additional tree keeps fitting ever smaller residuals, some of which represent noise rather than real signal, so too many trees causes the model to fit noise."
+  },
+  {
+    "id": 472,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How is the number of trees in boosting typically chosen?",
+    "back": "Using cross-validation, unlike bagging and random forests where more trees generally does not hurt."
+  },
+  {
+    "id": 473,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "List the three main tuning parameters of gradient boosting.",
+    "back": "Number of trees, shrinkage (learning rate), and interaction depth."
+  },
+  {
+    "id": 474,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Does bagging reduce bias or variance?",
+    "back": "Bagging (and random forests) primarily reduce variance by averaging many high-variance, low-bias trees."
+  },
+  {
+    "id": 475,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Does boosting reduce bias or variance?",
+    "back": "Boosting primarily reduces bias, building up predictive power gradually from many small, low-variance trees."
+  },
+  {
+    "id": 476,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Is bagging naturally resistant to overfitting as trees are added?",
+    "back": "Yes, since averaging more independent estimates only helps and does not add overfitting risk the way boosting can."
+  },
+  {
+    "id": 477,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Does boosting use random predictor subsets like random forests?",
+    "back": "No. Boosting controls complexity through shrinkage, interaction depth, and the number of trees, not through randomly restricting predictors at each split."
+  },
+  {
+    "id": 478,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Which ensemble method can be fit with trees built in parallel: bagging/random forests or boosting?",
+    "back": "Bagging and random forests, since each tree is grown independently on its own bootstrap sample."
+  },
+  {
+    "id": 479,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Give an actuarial example comparing boosting and random forests.",
+    "back": "A life insurer predicting lapse propensity for a term life block might find a carefully tuned boosted model outperforms a random forest, at the cost of a more involved tuning process."
+  },
+  {
+    "id": 480,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the main tradeoff of using ensemble methods instead of a single tree?",
+    "back": "Ensembles generally predict more accurately, but sacrifice the direct visual interpretability of a single tree that can be drawn and explained split by split."
+  },
+  {
+    "id": 481,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How can interpretability be partly recovered for an ensemble model?",
+    "back": "By reporting variable importance measures, which identify which predictors most influence the ensemble's predictions even though no single tree can be drawn."
+  },
+  {
+    "id": 482,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is overfitting?",
+    "back": "When a model fits the training data very closely, including its noise, but performs poorly when applied to new, unseen data."
+  },
+  {
+    "id": 483,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why are trees considered scale-invariant to predictors?",
+    "back": "Because splits are based on threshold comparisons of predictor values, so trees are not affected by whether a predictor is measured in different units or scales."
+  },
+  {
+    "id": 484,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Do trees naturally capture interactions between predictors?",
+    "back": "Yes, because a later split can be made conditional on the outcome of an earlier split, effectively modeling how predictors interact without specifying interaction terms manually."
+  },
+  {
+    "id": 485,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is a common range for the number of trees used in bagging or random forests?",
+    "back": "Often a few hundred trees, since additional trees continue to reduce variance without introducing new overfitting risk."
+  },
+  {
+    "id": 486,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why is OOB error useful in a time-limited exam setting?",
+    "back": "It gives an estimate of test error using only the training data itself, avoiding the need to set aside and re-fit on a separate holdout partition."
+  },
+  {
+    "id": 487,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What does it mean for a criterion to measure node purity?",
+    "back": "It quantifies how mixed the classes are within a node; a pure node contains observations almost entirely from one class, while a mixed node has classes evenly represented."
+  },
+  {
+    "id": 488,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why might classification error rate be a poor choice for growing a tree?",
+    "back": "It is less sensitive to changes in node composition than the Gini index or entropy, so it can fail to distinguish between splits that actually differ meaningfully in purity."
+  },
+  {
+    "id": 489,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What does cross-validation estimate when tuning tree size?",
+    "back": "The expected prediction error of a tree of a given size on data it was not trained on, used to select the pruning parameter that minimizes this estimated error."
+  },
+  {
+    "id": 490,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What role does the number of terminal nodes play in cost-complexity pruning?",
+    "back": "It appears as a penalty term multiplied by alpha; more terminal nodes increase the penalty, discouraging overly complex trees as alpha grows."
+  },
+  {
+    "id": 491,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What does weakest link pruning refer to?",
+    "back": "Another name for cost-complexity pruning, describing how the algorithm sequentially removes the split that adds the least to the tree's fit relative to its added complexity."
+  },
+  {
+    "id": 492,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why is a single pruned tree often preferred for regulatory or stakeholder communication?",
+    "back": "It can be drawn out and its splits explained directly in plain language, unlike an ensemble of many trees whose combined logic cannot be visualized as one diagram."
+  },
+  {
+    "id": 493,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What should a written Exam PA response state when proposing a tree-based model?",
+    "back": "The specific method (single pruned tree, bagging, random forest, or boosting), a justification tied to the business problem, and how tuning parameters were selected."
+  },
+  {
+    "id": 494,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "How does a random forest reduce correlation among its trees compared to bagging?",
+    "back": "By restricting each split to a randomly chosen subset of predictors, so different trees are forced to rely on different predictors rather than all converging on the same dominant one."
+  },
+  {
+    "id": 495,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why is boosting generally harder to tune well than a random forest?",
+    "back": "Boosting has three interacting tuning parameters (number of trees, shrinkage, interaction depth) that must be chosen together, while a random forest performs reasonably well with comparatively little tuning."
+  },
+  {
+    "id": 496,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the effect of interaction depth being very small in boosting?",
+    "back": "Each individual tree captures only limited structure (often just one split), and the ensemble's overall flexibility comes from combining many such simple trees sequentially."
+  },
+  {
+    "id": 497,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why might variable importance rankings differ between a random forest and a boosted model on the same data?",
+    "back": "Because the two methods build trees differently (parallel decorrelated trees versus sequential residual-fitting trees), so predictors can contribute to overall accuracy in different proportions across the two approaches."
+  },
+  {
+    "id": 498,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "What is the closing structure recommended for a written tree-based model response?",
+    "back": "State the modeling goal, propose a specific method with justification, describe how complexity was controlled, report a performance measure, and interpret the result in plain business language."
+  },
+  {
+    "id": 499,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Why is greedy splitting a limitation rather than a fatal flaw?",
+    "back": "It makes tree construction fast and computationally tractable, since every possible split does not need to be re-evaluated against all future splits, which matters far more than the accuracy cost of occasionally missing a globally better split sequence. In practice the resulting trees still perform well, especially once combined with pruning to control overfitting or ensembling to reduce variance, even though neither of those techniques directly corrects the greedy split search itself."
+  },
+  {
+    "id": 500,
+    "domain": "tree_based_models_and_ensemble_methods",
+    "front": "Summarize the core contrast between bagging, random forests, and boosting in one idea each.",
+    "back": "Bagging averages trees from bootstrap samples to cut variance; random forests add random predictor subsets to further decorrelate those trees; boosting builds trees sequentially on residuals to gradually cut bias."
+  }
+]
